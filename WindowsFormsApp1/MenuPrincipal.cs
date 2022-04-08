@@ -51,5 +51,15 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void pos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void proveedores_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
