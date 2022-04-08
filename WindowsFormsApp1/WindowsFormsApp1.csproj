@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultaVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaVentas.Designer.cs">
+      <DependentUpon>ConsultaVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuCompras.Designer.cs">
+      <DependentUpon>MenuCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuProductos.Designer.cs">
+      <DependentUpon>MenuProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuProveedores.Designer.cs">
+      <DependentUpon>MenuProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pos.Designer.cs">
+      <DependentUpon>Pos.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +84,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConsultaVentas.resx">
+      <DependentUpon>ConsultaVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuCompras.resx">
+      <DependentUpon>MenuCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuProductos.resx">
+      <DependentUpon>MenuProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuProveedores.resx">
+      <DependentUpon>MenuProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pos.resx">
+      <DependentUpon>Pos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

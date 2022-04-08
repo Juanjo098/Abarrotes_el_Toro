@@ -35,13 +35,11 @@
             this.pos = new System.Windows.Forms.Button();
             this.proveedores = new System.Windows.Forms.Button();
             this.compras = new System.Windows.Forms.Button();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.salir = new System.Windows.Forms.Button();
             this.ventas = new System.Windows.Forms.Button();
             this.productos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -128,17 +126,7 @@
             this.compras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.compras.UseMnemonic = false;
             this.compras.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(143)))), ((int)(((byte)(204)))));
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(981, 434);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 16;
-            this.pictureBox8.TabStop = false;
+            this.compras.Click += new System.EventHandler(this.compras_Click);
             // 
             // salir
             // 
@@ -154,6 +142,7 @@
             this.salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.salir.UseMnemonic = false;
             this.salir.UseVisualStyleBackColor = false;
+            this.salir.Click += new System.EventHandler(this.salir_Click);
             // 
             // ventas
             // 
@@ -170,6 +159,7 @@
             this.ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ventas.UseMnemonic = false;
             this.ventas.UseVisualStyleBackColor = false;
+            this.ventas.Click += new System.EventHandler(this.ventas_Click);
             // 
             // productos
             // 
@@ -186,6 +176,7 @@
             this.productos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.productos.UseMnemonic = false;
             this.productos.UseVisualStyleBackColor = false;
+            this.productos.Click += new System.EventHandler(this.productos_Click);
             // 
             // MenuPrincipal
             // 
@@ -195,7 +186,6 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.productos);
             this.Controls.Add(this.ventas);
-            this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.salir);
             this.Controls.Add(this.compras);
             this.Controls.Add(this.proveedores);
@@ -210,7 +200,6 @@
             this.Text = "Menú principal";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,7 +213,6 @@
         private System.Windows.Forms.Button pos;
         private System.Windows.Forms.Button proveedores;
         private System.Windows.Forms.Button compras;
-        private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button salir;
         private System.Windows.Forms.Button ventas;
         private System.Windows.Forms.Button productos;

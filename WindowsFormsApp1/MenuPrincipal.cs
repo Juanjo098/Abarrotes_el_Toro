@@ -54,12 +54,37 @@ namespace WindowsFormsApp1
 
         private void pos_Click(object sender, EventArgs e)
         {
-
+            Pos venta = new Pos();
+            venta.Show();
         }
 
         private void proveedores_Click(object sender, EventArgs e)
         {
+            MenuProveedores proveedores = new MenuProveedores();
+            proveedores.Show();
+        }
 
+        private void compras_Click(object sender, EventArgs e)
+        {
+            MenuCompras compras = new MenuCompras();
+            compras.Show();
+        }
+
+        private void productos_Click(object sender, EventArgs e)
+        {
+            MenuProductos productos = new MenuProductos();
+            productos.Show();
+        }
+
+        private void ventas_Click(object sender, EventArgs e)
+        {
+            ConsultaVentas consultaVentas = new ConsultaVentas();
+            consultaVentas.Show();
+        }
+
+        private void salir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
