@@ -131,6 +131,7 @@
             // salir
             // 
             this.salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(143)))), ((int)(((byte)(204)))));
+            this.salir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("salir.BackgroundImage")));
             this.salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.salir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.salir.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

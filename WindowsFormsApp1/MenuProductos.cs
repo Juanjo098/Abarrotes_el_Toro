@@ -20,11 +20,29 @@ namespace WindowsFormsApp1
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             Program.menuPrincipal.Show();
+            Dispose();
         }
 
         private void MenuProductos_Load(object sender, EventArgs e)
         {
             Program.menuPrincipal.Hide();
+        }
+
+        private void pos_Click(object sender, EventArgs e)
+        {
+            Producto producto = new Producto();
+            producto.Show();
+            Dispose();
+        }
+
+        private void productos_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuProductos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.menuPrincipal.Show();
         }
     }
 }

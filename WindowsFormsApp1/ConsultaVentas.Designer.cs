@@ -98,6 +98,7 @@
             this.Name = "ConsultaVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar ventas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsultaVentas_FormClosing);
             this.Load += new System.EventHandler(this.ConsultaVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

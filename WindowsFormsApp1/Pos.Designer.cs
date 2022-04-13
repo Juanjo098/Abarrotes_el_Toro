@@ -98,6 +98,7 @@
             this.Name = "Pos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Punto de venta";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pos_FormClosing);
             this.Load += new System.EventHandler(this.Pos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

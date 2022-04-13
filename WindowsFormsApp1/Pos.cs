@@ -27,5 +27,10 @@ namespace WindowsFormsApp1
         {
             Program.menuPrincipal.Hide();
         }
+
+        private void Pos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.menuPrincipal.Show();
+        }
     }
 }

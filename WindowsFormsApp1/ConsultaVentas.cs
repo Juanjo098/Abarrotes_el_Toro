@@ -27,5 +27,10 @@ namespace WindowsFormsApp1
             Program.menuPrincipal.Show();
             Close();
         }
+
+        private void ConsultaVentas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.menuPrincipal.Show();
+        }
     }
 }

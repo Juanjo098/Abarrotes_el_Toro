@@ -71,6 +71,7 @@
             this.proveedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.proveedores.UseMnemonic = false;
             this.proveedores.UseVisualStyleBackColor = false;
+            this.proveedores.Click += new System.EventHandler(this.proveedores_Click);
             // 
             // pictureBox3
             // 
@@ -134,6 +135,7 @@
             this.Name = "MenuCompras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú de compras";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuCompras_FormClosing);
             this.Load += new System.EventHandler(this.MenuCompras_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

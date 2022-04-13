@@ -27,5 +27,15 @@ namespace WindowsFormsApp1
             Close();
             Program.menuPrincipal.Show();
         }
+
+        private void proveedores_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuCompras_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.menuPrincipal.Show();
+        }
     }
 }

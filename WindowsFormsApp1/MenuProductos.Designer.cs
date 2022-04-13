@@ -57,6 +57,7 @@
             this.productos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.productos.UseMnemonic = false;
             this.productos.UseVisualStyleBackColor = false;
+            this.productos.Click += new System.EventHandler(this.productos_Click);
             // 
             // ventas
             // 
@@ -106,6 +107,7 @@
             this.pos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.pos.UseMnemonic = false;
             this.pos.UseVisualStyleBackColor = false;
+            this.pos.Click += new System.EventHandler(this.pos_Click);
             // 
             // pictureBox3
             // 
@@ -171,6 +173,7 @@
             this.Name = "MenuProductos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú de productos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuProductos_FormClosing);
             this.Load += new System.EventHandler(this.MenuProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

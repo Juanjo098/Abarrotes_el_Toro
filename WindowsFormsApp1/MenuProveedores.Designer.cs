@@ -154,6 +154,7 @@
             this.pos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.pos.UseMnemonic = false;
             this.pos.UseVisualStyleBackColor = false;
+            this.pos.Click += new System.EventHandler(this.pos_Click);
             // 
             // MenuProveedores
             // 
@@ -175,6 +176,7 @@
             this.Name = "MenuProveedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú de proveedores";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuProveedores_FormClosing);
             this.Load += new System.EventHandler(this.MenuProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

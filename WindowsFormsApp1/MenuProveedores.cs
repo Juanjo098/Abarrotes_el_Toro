@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class MenuProveedores : Form
     {
+
         public MenuProveedores()
         {
             InitializeComponent();
@@ -41,6 +42,18 @@ namespace WindowsFormsApp1
         private void MenuProveedores_Load(object sender, EventArgs e)
         {
             Program.menuPrincipal.Hide();
+        }
+
+        private void pos_Click(object sender, EventArgs e)
+        {
+            Proveedor prov = new Proveedor();
+            prov.Show();
+            Dispose();
+        }
+
+        private void MenuProveedores_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.menuPrincipal.Show();
         }
     }
 }
