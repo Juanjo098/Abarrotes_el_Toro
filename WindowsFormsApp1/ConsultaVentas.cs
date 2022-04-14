@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
         {
             // TODO: esta línea de código carga datos en la tabla 'aBARROTESTORODataSet.VENTAS' Puede moverla o quitarla según sea necesario.
             //this.vENTASTableAdapter.Fill(this.aBARROTESTORODataSet.VENTAS);
+            button1.Enabled = false;
             Program.menuPrincipal.Hide();
         }
 
@@ -85,7 +86,10 @@ namespace WindowsFormsApp1
 
         private void consulta_TextChanged(object sender, EventArgs e)
         {
-
+            if (consulta.Text.ToString() != "")
+                button1.Enabled = true;
+            else
+                button1.Enabled = false;
         }
     }
 }

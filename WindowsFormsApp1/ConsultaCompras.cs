@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
         {
             // TODO: esta línea de código carga datos en la tabla 'aBARROTESTORODataSet.COMPRAS' Puede moverla o quitarla según sea necesario.
             //this.cOMPRASTableAdapter.Fill(this.aBARROTESTORODataSet.COMPRAS);
+            button1.Enabled = false;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -74,6 +75,14 @@ namespace WindowsFormsApp1
             adapter.Fill(dt);
             tabla.DataSource = dt;
             connection.Close();
+        }
+
+        private void consulta_TextChanged(object sender, EventArgs e)
+        {
+            if (consulta.Text.ToString() != "")
+                button1.Enabled = true;
+            else
+                button1.Enabled = false;
         }
     }
 }

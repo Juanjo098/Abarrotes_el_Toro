@@ -90,6 +90,7 @@
             this.consulta.Name = "consulta";
             this.consulta.Size = new System.Drawing.Size(100, 29);
             this.consulta.TabIndex = 60;
+            this.consulta.TextChanged += new System.EventHandler(this.consulta_TextChanged);
             // 
             // label2
             // 
