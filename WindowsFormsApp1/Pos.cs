@@ -32,5 +32,10 @@ namespace WindowsFormsApp1
         {
             Program.menuPrincipal.Show();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

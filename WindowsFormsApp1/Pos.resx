@@ -328,7 +328,7 @@
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAE/RJREFUeF7t3W9TVUe6xmG//4cTJqMx0Uz8gxIESg0JhUVJOTRxHJEbYe+99t7r
+        DgAACw4BQL7hQQAAE/RJREFUeF7t3W9TVUe6xmG//4cTJqMx0Uz8gxIESg0JhUVJOTRxHJEbYe+99t7r
         6b5+VVd1cr84o/SLXifnTHzw+fNnAGAwcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBv
         cQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZH
         AKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA+hZHAKBvcQQA
@@ -416,6 +416,30 @@
         iyMA0Lc4AgB9iyMA0Lc4AgA9+/zgv2BZGJmhbjEMAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="clave.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="precio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clave.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="precio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIAAoIAQAFgAAACgAAAAAAQAAAAIAAAEAIAAAAAAAAAAEABILAAASCwAAAAAAAAAA
