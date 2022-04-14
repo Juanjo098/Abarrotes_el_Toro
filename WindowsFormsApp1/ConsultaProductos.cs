@@ -11,44 +11,30 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
-    public partial class ConsultaVentas : Form
+    public partial class ConsultaProductos : Form
     {
-        public ConsultaVentas()
+        private Boolean ban = true;
+
+        public ConsultaProductos()
         {
             InitializeComponent();
         }
 
-        private void ConsultaVentas_Load(object sender, EventArgs e)
-        {
-            // TODO: esta línea de código carga datos en la tabla 'aBARROTESTORODataSet.VENTAS' Puede moverla o quitarla según sea necesario.
-            //this.vENTASTableAdapter.Fill(this.aBARROTESTORODataSet.VENTAS);
-            Program.menuPrincipal.Hide();
-        }
-
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Program.menuPrincipal.Show();
+            ban = false;
+            MenuProductos menuProductos = new MenuProductos();
+            menuProductos.Show();
             Close();
         }
 
-        private void ConsultaVentas_FormClosing(object sender, FormClosingEventArgs e)
+        private void ConsultaProductos_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.menuPrincipal.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
+            if (ban)
+            {
+                MenuProductos menuProductos = new MenuProductos();
+                menuProductos.Show();
+            }
         }
 
         private void pRODUCTOSBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -59,9 +45,15 @@ namespace WindowsFormsApp1
 
         }
 
+        private void ConsultaProductos_Load(object sender, EventArgs e)
+        {
+            // TODO: esta línea de código carga datos en la tabla 'aBARROTESTORODataSet.PRODUCTOS' Puede moverla o quitarla según sea necesario.
+            //this.pRODUCTOSTableAdapter.Fill(this.aBARROTESTORODataSet.PRODUCTOS);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM VENTAS WHERE CVEVEN=" + this.consulta.Text;
+            String consulta = "SELECT * FROM PRODUCTOS WHERE CLVPROD=" + this.consulta.Text;
             SqlConnection connection = Conexion.Connection();
             connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
@@ -73,7 +65,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM VENTAS";
+            String consulta = "SELECT * FROM PRODUCTOS";
             SqlConnection connection = Conexion.Connection();
             connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
@@ -81,11 +73,6 @@ namespace WindowsFormsApp1
             adapter.Fill(dt);
             tabla.DataSource = dt;
             connection.Close();
-        }
-
-        private void consulta_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

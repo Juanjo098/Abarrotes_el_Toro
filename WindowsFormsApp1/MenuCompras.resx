@@ -121,7 +121,7 @@
   <data name="ventas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAYAAAC+ZpjcAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAA+29JREFUeF7snXdcnMfRxx9JVrMty7333nvvvcRJ3sQpTuI4jlOcOLHjokpR79WS
+        DwAACw8BkvkDpQAA+29JREFUeF7snXdcnMfRxx9JVrMty7333nvvvcRJ3sQpTuI4jlOcOLHjokpR79WS
         LFuF3hEgCdRQFxJCXYAKEghE7713mHd+e3cyxmtbFlyBmz++H2CBu73n2Z39PbOzMwYRCYIgCIIgCN2I
         tlEQBEEQBEE4c7SNgiAIgiAIwpmjbRQEQRAEQRDOHG2jIAiCIAiCcOZoGwVBEARBEIQzR9soCIIgCIIg
         nDnaRkEQBEEQBOHM0TYKgiAIgiAIZ462URAEQRAEQThztI2CIAiCIAjCmaNtFARBEARBEM4cbaMgCIIg
@@ -1200,7 +1200,7 @@
   <data name="proveedores.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYCAYAAAC+ZpjcAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAZnNJREFUeF7t3Qf8HHP+x/Ffeu9IiIiQqKf33qI7nVPOudN7Ob1FJE7vHIdwRI8e
+        DwAACw8BkvkDpQAAZnNJREFUeF7t3Qf8HHP+x/Ffeu9IiIiQqKf33qI7nVPOudN7Ob1FJE7vHIdwRI8e
         7TgXHIdzhOicdkGQSBEhUr//z2d/+/P/+eXz25mdnZ39zszr/Xg8H+T72zI7Ozvz3tnZ2TrnHAAAAGJk
         DgIAACA6cxAAAADRmYMAAACIzhwEAABAdOYgAAAAojMHAQAAEJ05CAAAgOjMQQAAAERnDgIAACA6cxAA
         AADRmYMAAACIzhwEAABAdOYgAAAAojMHAQAAEJ05CAAAgOjMQQAAAERnDgIAACA6cxAAAADRmYMAAACI

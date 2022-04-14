@@ -12,6 +12,9 @@ namespace WindowsFormsApp1
 {
     public partial class MenuCompras : Form
     {
+
+        private Boolean ban = true;
+
         public MenuCompras()
         {
             InitializeComponent();
@@ -24,6 +27,7 @@ namespace WindowsFormsApp1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            ban = false;
             Close();
             Program.menuPrincipal.Show();
         }
@@ -35,7 +39,16 @@ namespace WindowsFormsApp1
 
         private void MenuCompras_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.menuPrincipal.Show();
+            if (ban)
+                Program.menuPrincipal.Show();
+        }
+
+        private void ventas_Click(object sender, EventArgs e)
+        {
+            ban = false;
+            ConsultaCompras consultaCompras = new ConsultaCompras();
+            consultaCompras.Show();
+            Close();
         }
     }
 }

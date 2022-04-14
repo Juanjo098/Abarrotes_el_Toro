@@ -61,6 +61,7 @@ namespace WindowsFormsApp1
 
         private void ventas_Click(object sender, EventArgs e)
         {
+            ban = false;
             ConsultaProveedores consultaProveedores = new ConsultaProveedores();
             consultaProveedores.Show();
             Close();

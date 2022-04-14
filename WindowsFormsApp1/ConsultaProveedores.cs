@@ -31,24 +31,30 @@ namespace WindowsFormsApp1
         private void ConsultaProveedores_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'aBARROTESTORODataSet.PROVEEDOR' Puede moverla o quitarla según sea necesario.
-            this.pROVEEDORTableAdapter.Fill(this.aBARROTESTORODataSet.PROVEEDOR);
-
+            //this.pROVEEDORTableAdapter.Fill(this.aBARROTESTORODataSet.PROVEEDOR);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM PROVEEDOR WHERE CLVPROV=" + this.consulta.Text;
-            SqlConnection connection = Conexion.Connection();
-            connection.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            tabla.DataSource = dt;
-            connection.Close();
+            if (this.consulta.Text.ToString() != "")
+            {
+                String consulta = "SELECT * FROM PROVEEDOR WHERE CLVPROV=" + this.consulta.Text;
+                SqlConnection connection = Conexion.Connection();
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                tabla.DataSource = dt;
+                connection.Close();
+            }
+            else
+                MessageBox.Show("No puede dejar el campo vacío si va a hacer una consulta");
+            
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            ban = false;
             MenuProveedores menuProveedores = new MenuProveedores();
             menuProveedores.Show();
             Close();
