@@ -121,6 +121,7 @@
             this.ventas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ventas.UseMnemonic = false;
             this.ventas.UseVisualStyleBackColor = false;
+            this.ventas.Click += new System.EventHandler(this.ventas_Click);
             // 
             // proveedores
             // 

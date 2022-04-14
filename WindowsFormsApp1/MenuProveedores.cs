@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     public partial class MenuProveedores : Form
     {
 
+        private Boolean ban = true;
         public MenuProveedores()
         {
             InitializeComponent();
@@ -20,8 +21,9 @@ namespace WindowsFormsApp1
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Close();
+            ban = false;
             Program.menuPrincipal.Show();
+            Close();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -53,7 +55,15 @@ namespace WindowsFormsApp1
 
         private void MenuProveedores_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.menuPrincipal.Show();
+            if (ban)
+                Program.menuPrincipal.Show();
+        }
+
+        private void ventas_Click(object sender, EventArgs e)
+        {
+            ConsultaProveedores consultaProveedores = new ConsultaProveedores();
+            consultaProveedores.Show();
+            Close();
         }
     }
 }

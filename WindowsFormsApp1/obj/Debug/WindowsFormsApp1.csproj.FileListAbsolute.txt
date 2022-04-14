@@ -27,3 +27,4 @@ C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\Windows
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ConsultaVentas.resources
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Proveedor.resources
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Producto.resources
+C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ConsultaProveedores.resources

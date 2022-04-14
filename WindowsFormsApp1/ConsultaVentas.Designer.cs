@@ -61,6 +61,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 38;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label1
             // 
@@ -73,6 +74,7 @@
             this.label1.Size = new System.Drawing.Size(289, 37);
             this.label1.TabIndex = 37;
             this.label1.Text = "Abarrotes el Toro";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
@@ -82,6 +84,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(1267, 80);
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // ConsultaVentas
             // 

@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABARROTESTORODataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ABARROTESTORODataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Conexion.cs" />
+    <Compile Include="ConsultaProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaProveedores.Designer.cs">
+      <DependentUpon>ConsultaProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultaVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,9 @@
     <Compile Include="Proveedor.Designer.cs">
       <DependentUpon>Proveedor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConsultaProveedores.resx">
+      <DependentUpon>ConsultaProveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultaVentas.resx">
       <DependentUpon>ConsultaVentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +144,17 @@
     <EmbeddedResource Include="Proveedor.resx">
       <DependentUpon>Proveedor.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ABARROTESTORODataSet.xsc">
+      <DependentUpon>ABARROTESTORODataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ABARROTESTORODataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ABARROTESTORODataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ABARROTESTORODataSet.xss">
+      <DependentUpon>ABARROTESTORODataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
