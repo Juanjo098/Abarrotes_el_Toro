@@ -13,8 +13,6 @@ namespace WindowsFormsApp1
 {
     public partial class Pos : Form
     {
-        private SqlConnection connection = Conexion.Connection();
-
         public Pos()
         {
             InitializeComponent();
@@ -44,8 +42,14 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            capturarCompra();
+        }
+
+        private void capturarCompra()
+        {
             if (tabla.Rows.Count != 0)
             {
+                SqlConnection connection = Conexion.Connection();
                 String erros = "";
                 SqlCommand command, command1;
                 SqlDataReader reader = null;
@@ -53,7 +57,7 @@ namespace WindowsFormsApp1
 
                 for (int i = 0; i < tabla.Rows.Count; i++)
                 {
-                    command = new SqlCommand("SELECT EXIST FROM PRODUCTOS WHERE CLVPROD =" + tabla[0,i].Value.ToString(), connection);
+                    command = new SqlCommand("SELECT EXIST FROM PRODUCTOS WHERE CLVPROD =" + tabla[0, i].Value.ToString(), connection);
                     reader = command.ExecuteReader();
                     if (reader.Read())
                     {
@@ -62,18 +66,22 @@ namespace WindowsFormsApp1
                             erros += "Hay " + reader["EXIST"].ToString() + " " + tabla[2, i].Value.ToString() + "\n";
                         }
                     }
+                    reader.Close();
                 }
-                reader.Close();
                 if (erros == "")
                 {
-                    //int claveVenta;
-                    //command = new SqlCommand("INSERTAVENTAS 0", connection);
-                    //command.CommandType = CommandType.StoredProcedure;
-                    //command.ExecuteNonQuery();
-                    //MessageBox.Show("Venta registrada");
+                    command1 = new SqlCommand("INSERTAVENTAS", connection);
+                    command1.CommandType = CommandType.StoredProcedure;
+                    command1.Parameters.Add("@CVEVEN", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command1.ExecuteNonQuery();
+                    MessageBox.Show("Venta con clave " + command1.Parameters["@CVEVEN"].Value.ToString() + " registrada,");
+                    tabla.Rows.Clear();
+                    acualizarTotal();
                 }
                 else
+                {
                     MessageBox.Show("Está tratando de vender más productos de los que hay en existencia\n" + erros);
+                }
                 connection.Close();
             }
             else
@@ -123,6 +131,7 @@ namespace WindowsFormsApp1
             {
                 if (claveInsertada())
                 {
+                    SqlConnection connection = Conexion.Connection();
                     SqlCommand command = new SqlCommand("SELECT CLVPROD, NOMPRODUCT, PRECIOVEN FROM PRODUCTOS WHERE CLVPROD =" + claveProd.Text, connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -139,6 +148,7 @@ namespace WindowsFormsApp1
                             acualizarTotal();
                         }
                     }
+                    reader.Close();
                     connection.Close();
                 }
             }
