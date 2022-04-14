@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
             {
                 SqlConnection connection = Conexion.Connection();
                 String erros = "";
-                SqlCommand command, command1;
+                SqlCommand command;
                 SqlDataReader reader = null;
                 connection.Open();
 
@@ -70,11 +70,27 @@ namespace WindowsFormsApp1
                 }
                 if (erros == "")
                 {
-                    command1 = new SqlCommand("INSERTAVENTAS", connection);
-                    command1.CommandType = CommandType.StoredProcedure;
-                    command1.Parameters.Add("@CVEVEN", SqlDbType.Int).Direction = ParameterDirection.Output;
-                    command1.ExecuteNonQuery();
-                    MessageBox.Show("Venta con clave " + command1.Parameters["@CVEVEN"].Value.ToString() + " registrada,");
+
+                    int claveVenta;
+                    command = new SqlCommand("INSERTAVENTAS", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@CVEVEN", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.ExecuteNonQuery();
+
+                    claveVenta = int.Parse(command.Parameters["@CVEVEN"].Value.ToString());
+
+                    for (int i = 0; i < tabla.Rows.Count; i++)
+                    {
+                        command = new SqlCommand("INSERTAVENPROD", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@CVEVEN", claveVenta);
+                        command.Parameters.AddWithValue("@CLVPROD", tabla[0, i].Value.ToString());
+                        command.Parameters.AddWithValue("@CANTVEN", tabla[1, i].Value.ToString());
+                        command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
+                        command.ExecuteNonQuery();
+                    }
+
+
                     tabla.Rows.Clear();
                     acualizarTotal();
                 }
