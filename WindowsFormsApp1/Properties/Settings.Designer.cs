@@ -33,5 +33,16 @@ namespace WindowsFormsApp1.Properties {
                 return ((string)(this["ABARROTESTOROConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-J819RJ3;Initial Catalog=ABARROTESTORO;Integrated Security=Tru" +
+            "e")]
+        public string ABARROTESTOROConnectionString1 {
+            get {
+                return ((string)(this["ABARROTESTOROConnectionString1"]));
+            }
+        }
     }
 }
