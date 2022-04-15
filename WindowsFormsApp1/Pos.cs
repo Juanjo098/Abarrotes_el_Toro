@@ -90,7 +90,6 @@ namespace WindowsFormsApp1
                         command.ExecuteNonQuery();
                     }
 
-
                     tabla.Rows.Clear();
                     acualizarTotal();
                 }
