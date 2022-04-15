@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ABARROTESTORODataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ABARROTESTORODataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ABARROTESTORODataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="ConsultaCompras.cs">
       <SubType>Form</SubType>
@@ -172,6 +177,17 @@
     </None>
     <None Include="ABARROTESTORODataSet.xss">
       <DependentUpon>ABARROTESTORODataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ABARROTESTORODataSet1.xsc">
+      <DependentUpon>ABARROTESTORODataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ABARROTESTORODataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ABARROTESTORODataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ABARROTESTORODataSet1.xss">
+      <DependentUpon>ABARROTESTORODataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
