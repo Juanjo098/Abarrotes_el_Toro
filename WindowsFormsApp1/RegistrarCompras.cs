@@ -206,39 +206,45 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             String errors = confirmarProveedor();
-            if (errors == "")
+            if (tabla.Rows.Count > 0)
             {
-                SqlCommand command;
-                String prov = proveedores.Text;
-                connection.Open();
+                if (errors == "")
+                {
+                    SqlCommand command;
+                    String prov = proveedores.Text;
+                    connection.Open();
 
-                command = new SqlCommand("INTERTACOMPRA", connection);
-                command.CommandType=CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@PROV", prov);
-                command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
-                command.ExecuteNonQuery();
-
-                for (int i = 0; i < tabla.RowCount; i++){
-                    command = new SqlCommand("INTERTAPRODCOM", connection);
+                    command = new SqlCommand("INTERTACOMPRA", connection);
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@CLVCOM", int.Parse(clave.Text));
-                    command.Parameters.AddWithValue("@CLVPROD", int.Parse(tabla[0, i].Value.ToString()));
-                    command.Parameters.AddWithValue("@CANTCOM", int.Parse(tabla[1, i].Value.ToString()));
-                    command.Parameters.AddWithValue("@PRECIOCOM", decimal.Parse(tabla[3, i].Value.ToString()));
-                    command.Parameters.AddWithValue("@GANAN", decimal.Parse(tabla[4, i].Value.ToString()));
+                    command.Parameters.AddWithValue("@PROV", prov);
                     command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
                     command.ExecuteNonQuery();
+
+                    for (int i = 0; i < tabla.RowCount; i++)
+                    {
+                        command = new SqlCommand("INTERTAPRODCOM", connection);
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@CLVCOM", int.Parse(clave.Text));
+                        command.Parameters.AddWithValue("@CLVPROD", int.Parse(tabla[0, i].Value.ToString()));
+                        command.Parameters.AddWithValue("@CANTCOM", int.Parse(tabla[1, i].Value.ToString()));
+                        command.Parameters.AddWithValue("@PRECIOCOM", decimal.Parse(tabla[3, i].Value.ToString()));
+                        command.Parameters.AddWithValue("@GANAN", decimal.Parse(tabla[4, i].Value.ToString()));
+                        command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                    obtenerClaveCompra();
+                    acualizarTotal();
+                    tabla.Rows.Clear();
+                    MessageBox.Show("Compra registrada exitosamente");
                 }
-                connection.Close();
-                obtenerClaveCompra();
-                acualizarTotal();
-                tabla.Rows.Clear();
-                MessageBox.Show("Compra registrada exitosamente");
+                else
+                {
+                    MessageBox.Show("Los siguientes productos no son venidos por el proveedor selecionado\n" + errors);
+                }
             }
             else
-            {
-                MessageBox.Show("Los siguientes productos no son venidos por el proveedor selecionado\n" + errors);
-            }
+                MessageBox.Show("Debes añadir por lo menos un registro para hacer la compra");
         }
     }
 }
