@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 {
     public partial class Pos : Form
     {
+        private SqlConnection connection = Conexion.Connection();
         public Pos()
         {
             InitializeComponent();
@@ -49,7 +50,6 @@ namespace WindowsFormsApp1
         {
             if (tabla.Rows.Count != 0)
             {
-                SqlConnection connection = Conexion.Connection();
                 String erros = "";
                 SqlCommand command;
                 SqlDataReader reader = null;
@@ -146,7 +146,6 @@ namespace WindowsFormsApp1
             {
                 if (claveInsertada())
                 {
-                    SqlConnection connection = Conexion.Connection();
                     SqlCommand command = new SqlCommand("SELECT CLVPROD, NOMPRODUCT, PRECIOVEN FROM PRODUCTOS WHERE CLVPROD =" + claveProd.Text, connection);
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -174,5 +173,9 @@ namespace WindowsFormsApp1
             return claveProd.Text != "";
         }
 
+        private void claveProd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

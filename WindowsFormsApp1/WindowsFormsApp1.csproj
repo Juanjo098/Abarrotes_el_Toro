@@ -125,6 +125,12 @@
     <Compile Include="Proveedor.Designer.cs">
       <DependentUpon>Proveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrarCompras.Designer.cs">
+      <DependentUpon>RegistrarCompras.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConsultaCompras.resx">
       <DependentUpon>ConsultaCompras.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +172,9 @@
     </Compile>
     <EmbeddedResource Include="Proveedor.resx">
       <DependentUpon>Proveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistrarCompras.resx">
+      <DependentUpon>RegistrarCompras.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ABARROTESTORODataSet.xsc">
       <DependentUpon>ABARROTESTORODataSet.xsd</DependentUpon>

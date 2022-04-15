@@ -156,6 +156,7 @@
             this.claveProd.Name = "claveProd";
             this.claveProd.Size = new System.Drawing.Size(376, 32);
             this.claveProd.TabIndex = 9;
+            this.claveProd.TextChanged += new System.EventHandler(this.claveProd_TextChanged);
             this.claveProd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.claveProd_KeyPress);
             // 
             // label2
@@ -199,7 +200,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 41);
             this.button1.TabIndex = 13;
-            this.button1.Text = "Capturar compra";
+            this.button1.Text = "Capturar venta";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

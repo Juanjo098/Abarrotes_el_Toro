@@ -34,7 +34,10 @@ namespace WindowsFormsApp1
 
         private void proveedores_Click(object sender, EventArgs e)
         {
-
+            ban = false;
+            RegistrarCompras registrarCompras = new RegistrarCompras();
+            registrarCompras.Show();
+            Close();
         }
 
         private void MenuCompras_FormClosing(object sender, FormClosingEventArgs e)
