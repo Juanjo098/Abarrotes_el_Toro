@@ -91,7 +91,7 @@ ELSE
 	SET @NOMDIST = NULL
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado que se encarga de hacer registros en la tabla compras*/
-CREATE ALTER PROC INTERTACOMPRA
+CREATE PROC INTERTACOMPRA
 @PROV INT,
 @BAN INT OUTPUT
 
