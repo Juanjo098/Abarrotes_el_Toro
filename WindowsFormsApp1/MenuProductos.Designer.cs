@@ -91,6 +91,7 @@
             this.proveedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.proveedores.UseMnemonic = false;
             this.proveedores.UseVisualStyleBackColor = false;
+            this.proveedores.Click += new System.EventHandler(this.proveedores_Click);
             // 
             // pos
             // 

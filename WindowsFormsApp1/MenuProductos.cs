@@ -39,7 +39,9 @@ namespace WindowsFormsApp1
 
         private void productos_Click(object sender, EventArgs e)
         {
-
+            Producto producto = new Producto();
+            producto.Show();
+            Dispose();
         }
 
         private void MenuProductos_FormClosing(object sender, FormClosingEventArgs e)
@@ -54,6 +56,13 @@ namespace WindowsFormsApp1
             ConsultaProductos consultaProductos = new ConsultaProductos();
             consultaProductos.Show();
             Close();
+        }
+
+        private void proveedores_Click(object sender, EventArgs e)
+        {
+            Producto producto = new Producto();
+            producto.Show();
+            Dispose();
         }
     }
 }

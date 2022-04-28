@@ -105,6 +105,7 @@
             this.productos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.productos.UseMnemonic = false;
             this.productos.UseVisualStyleBackColor = false;
+            this.productos.Click += new System.EventHandler(this.productos_Click);
             // 
             // ventas
             // 
@@ -138,6 +139,7 @@
             this.proveedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.proveedores.UseMnemonic = false;
             this.proveedores.UseVisualStyleBackColor = false;
+            this.proveedores.Click += new System.EventHandler(this.proveedores_Click);
             // 
             // pos
             // 

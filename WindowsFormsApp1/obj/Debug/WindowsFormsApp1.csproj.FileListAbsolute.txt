@@ -52,3 +52,4 @@ C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegistrarCompras.resources
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegistrarCompras.resources

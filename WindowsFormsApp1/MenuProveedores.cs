@@ -66,5 +66,19 @@ namespace WindowsFormsApp1
             consultaProveedores.Show();
             Close();
         }
+
+        private void proveedores_Click(object sender, EventArgs e)
+        {
+            Proveedor prov = new Proveedor();
+            prov.Show();
+            Dispose();
+        }
+
+        private void productos_Click(object sender, EventArgs e)
+        {
+            Proveedor prov = new Proveedor();
+            prov.Show();
+            Dispose();
+        }
     }
 }
