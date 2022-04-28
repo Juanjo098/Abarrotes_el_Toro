@@ -13,10 +13,13 @@ namespace WindowsFormsApp1
     public partial class Proveedor : Form
     {
         private Boolean ban = true;
+        private String funcion;
 
-        public Proveedor()
+        public Proveedor(String funcion)
         {
+            this.funcion = funcion;
             InitializeComponent();
+            setearBotones();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -69,6 +72,47 @@ namespace WindowsFormsApp1
         private void nom_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void setearBotones()
+        {
+            switch (funcion)
+            {
+                case "insertar":
+                    insertar.Enabled = true;
+                    eliminar.Enabled = false;
+                    modificar.Enabled = false;
+                    consultar.Enabled = true;
+                    clave.Enabled = false;
+                    break;
+                case "modificar":
+                    insertar.Enabled = false;
+                    eliminar.Enabled = false;
+                    modificar.Enabled = true;
+                    consultar.Enabled = true;
+                    clave.Enabled = true;
+                    nom.Enabled = false;
+                    dis.Enabled = false;
+                    tel.Enabled = false;
+                    dir.Enabled = false;
+                    codigo.Enabled = false;
+                    ciudad.Enabled = false;
+                    clave.Enabled = true;
+                    break;
+                case "eliminar":
+                    insertar.Enabled = false;
+                    eliminar.Enabled = true;
+                    modificar.Enabled = false;
+                    consultar.Enabled = true;
+                    nom.Enabled = false;
+                    dis.Enabled = false;
+                    tel.Enabled = false;
+                    dir.Enabled = false;
+                    codigo.Enabled = false;
+                    ciudad.Enabled = false;
+                    clave.Enabled = true;
+                    break;
+            }
         }
     }
 }

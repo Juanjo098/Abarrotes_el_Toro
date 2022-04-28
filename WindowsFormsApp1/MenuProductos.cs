@@ -32,14 +32,14 @@ namespace WindowsFormsApp1
 
         private void pos_Click(object sender, EventArgs e)
         {
-            Producto producto = new Producto();
+            Producto producto = new Producto("insertar");
             producto.Show();
             Dispose();
         }
 
         private void productos_Click(object sender, EventArgs e)
         {
-            Producto producto = new Producto();
+            Producto producto = new Producto("eliminar");
             producto.Show();
             Dispose();
         }
@@ -60,7 +60,7 @@ namespace WindowsFormsApp1
 
         private void proveedores_Click(object sender, EventArgs e)
         {
-            Producto producto = new Producto();
+            Producto producto = new Producto("modificar");
             producto.Show();
             Dispose();
         }

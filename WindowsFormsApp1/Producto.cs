@@ -13,10 +13,13 @@ namespace WindowsFormsApp1
     public partial class Producto : Form
     {
         private Boolean ban = true;
+        private String funcion;
 
-        public Producto()
+        public Producto(String funcion)
         {
+            this.funcion = funcion;
             InitializeComponent();
+            setearBotones();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -38,6 +41,42 @@ namespace WindowsFormsApp1
             {
                 MenuProductos menuProductos = new MenuProductos();
                 menuProductos.Show();
+            }
+        }
+
+        private void setearBotones()
+        {
+            switch (funcion)
+            {
+                case "insertar":
+                    insertar.Enabled = true;
+                    eliminar.Enabled = false;
+                    modificar.Enabled = false;
+                    consultar.Enabled = true;
+                    clave.Enabled = false;
+                    break;
+                case "modificar":
+                    insertar.Enabled = false;
+                    eliminar.Enabled = false;
+                    modificar.Enabled = true;
+                    consultar.Enabled = true;
+                    nom.Enabled = false;
+                    prccomp.Enabled = false;
+                    prcvent.Enabled = false;
+                    exi.Enabled = false;
+                    gan.Enabled = false;
+                    break;
+                case "eliminar":
+                    insertar.Enabled = false;
+                    eliminar.Enabled = true;
+                    modificar.Enabled = false;
+                    consultar.Enabled = true;
+                    nom.Enabled = false;
+                    prccomp.Enabled = false;
+                    prcvent.Enabled = false;
+                    exi.Enabled = false;
+                    gan.Enabled = false;
+                    break;
             }
         }
     }
