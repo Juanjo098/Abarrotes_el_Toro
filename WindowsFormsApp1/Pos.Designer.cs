@@ -135,6 +135,7 @@
             this.tabla.TabIndex = 7;
             this.tabla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.tabla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabla_CellEndEdit);
+            this.tabla.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tabla_KeyUp);
             // 
             // clave
             // 

@@ -246,5 +246,14 @@ namespace WindowsFormsApp1
             else
                 MessageBox.Show("Debes añadir por lo menos un registro para hacer la compra");
         }
+
+        private void tabla_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
+                acualizarTotal();
+            }
+        }
     }
 }

@@ -51,6 +51,8 @@
             this.eliminar = new System.Windows.Forms.Button();
             this.modificar = new System.Windows.Forms.Button();
             this.consultar = new System.Windows.Forms.Button();
+            this.email = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -179,7 +181,7 @@
             // codigo
             // 
             this.codigo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codigo.Location = new System.Drawing.Point(325, 422);
+            this.codigo.Location = new System.Drawing.Point(325, 499);
             this.codigo.Name = "codigo";
             this.codigo.Size = new System.Drawing.Size(561, 32);
             this.codigo.TabIndex = 49;
@@ -190,7 +192,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label6.Location = new System.Drawing.Point(161, 425);
+            this.label6.Location = new System.Drawing.Point(161, 502);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(158, 24);
             this.label6.TabIndex = 48;
@@ -200,7 +202,7 @@
             // ciudad
             // 
             this.ciudad.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ciudad.Location = new System.Drawing.Point(325, 491);
+            this.ciudad.Location = new System.Drawing.Point(325, 568);
             this.ciudad.Name = "ciudad";
             this.ciudad.Size = new System.Drawing.Size(561, 32);
             this.ciudad.TabIndex = 51;
@@ -210,7 +212,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label7.Location = new System.Drawing.Point(229, 494);
+            this.label7.Location = new System.Drawing.Point(229, 571);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 24);
             this.label7.TabIndex = 50;
@@ -219,7 +221,7 @@
             // clave
             // 
             this.clave.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clave.Location = new System.Drawing.Point(325, 560);
+            this.clave.Location = new System.Drawing.Point(325, 637);
             this.clave.Name = "clave";
             this.clave.Size = new System.Drawing.Size(561, 32);
             this.clave.TabIndex = 53;
@@ -229,7 +231,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label8.Location = new System.Drawing.Point(245, 563);
+            this.label8.Location = new System.Drawing.Point(245, 640);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(74, 24);
             this.label8.TabIndex = 52;
@@ -245,6 +247,7 @@
             this.insertar.TabIndex = 54;
             this.insertar.Text = "INSERTAR";
             this.insertar.UseVisualStyleBackColor = true;
+            this.insertar.Click += new System.EventHandler(this.insertar_Click);
             // 
             // eliminar
             // 
@@ -255,6 +258,7 @@
             this.eliminar.TabIndex = 55;
             this.eliminar.Text = "ELIMINAR";
             this.eliminar.UseVisualStyleBackColor = true;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // modificar
             // 
@@ -265,6 +269,7 @@
             this.modificar.TabIndex = 56;
             this.modificar.Text = "MODIFICAR";
             this.modificar.UseVisualStyleBackColor = true;
+            this.modificar.Click += new System.EventHandler(this.modificar_Click);
             // 
             // consultar
             // 
@@ -275,6 +280,26 @@
             this.consultar.TabIndex = 57;
             this.consultar.Text = "CONSULTAR";
             this.consultar.UseVisualStyleBackColor = true;
+            this.consultar.Click += new System.EventHandler(this.consultar_Click);
+            // 
+            // email
+            // 
+            this.email.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.Location = new System.Drawing.Point(325, 429);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(561, 32);
+            this.email.TabIndex = 59;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label9.Location = new System.Drawing.Point(245, 432);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(74, 24);
+            this.label9.TabIndex = 58;
+            this.label9.Text = "Email:";
             // 
             // Proveedor
             // 
@@ -282,6 +307,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.email);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.consultar);
             this.Controls.Add(this.modificar);
             this.Controls.Add(this.eliminar);
@@ -343,5 +370,7 @@
         private System.Windows.Forms.Button eliminar;
         private System.Windows.Forms.Button modificar;
         private System.Windows.Forms.Button consultar;
+        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -177,5 +177,14 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void tabla_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
+                acualizarTotal();
+            }
+        }
     }
 }
