@@ -63,6 +63,7 @@
             this.consultar.TabIndex = 79;
             this.consultar.Text = "CONSULTAR";
             this.consultar.UseVisualStyleBackColor = true;
+            this.consultar.Click += new System.EventHandler(this.consultar_Click);
             // 
             // modificar
             // 
@@ -73,6 +74,7 @@
             this.modificar.TabIndex = 78;
             this.modificar.Text = "MODIFICAR";
             this.modificar.UseVisualStyleBackColor = true;
+            this.modificar.Click += new System.EventHandler(this.modificar_Click);
             // 
             // eliminar
             // 
@@ -83,6 +85,7 @@
             this.eliminar.TabIndex = 77;
             this.eliminar.Text = "ELIMINAR";
             this.eliminar.UseVisualStyleBackColor = true;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // insertar
             // 
@@ -93,6 +96,7 @@
             this.insertar.TabIndex = 76;
             this.insertar.Text = "INSERTAR";
             this.insertar.UseVisualStyleBackColor = true;
+            this.insertar.Click += new System.EventHandler(this.insertar_Click);
             // 
             // clave
             // 

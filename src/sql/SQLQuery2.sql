@@ -1,3 +1,4 @@
+--PROCESOS ALMACENADOS PARA LA TABLA DE VENTAS
 -------------------------------------------------------------------------------------------------------------------------------------------------
 /*Proceso almacenado que se encarga de insertar datos en la tabla detalles productos-ventas
 	-Actualiza la total de la venta
@@ -65,8 +66,10 @@ ELSE
 						PRINT 'VENTA INSERTADA'
 					COMMIT TRAN
 				END
+
+--PROCESOS ALMACENADOS PARA LA TABLA DE COMPRAS
 -----------------------------------------------------------------------------------------------------------------------------------------------
-/*Procedimiento almacenado para obtener la próxima clave de venta a insertar*/
+/*Procedimiento almacenado para obtener la próxima clave de compra a insertar*/
 SELECT * FROM PROVEEDOR
 CREATE PROC ULTIMACLVCOMPRA
 @CLVCOM INT OUT
@@ -77,6 +80,7 @@ IF (SELECT COUNT(*) FROM COMPRAS)=0
 	SET @CLVCOM=300
 ELSE
 	SET @CLVCOM=(SELECT MAX(CLVCOM) FROM COMPRAS)+1
+
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado que retorna el nombre del provedor*/
 CREATE PROC NOMBREPROV
@@ -120,7 +124,6 @@ ELSE
 	END
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado para verificar que un producto sea vendido por un determiando proveedor*/
-
 SELECT PRODUCTOS.CLVPROD, PROVEEDOR.CLVPROV
 FROM PRODUCTOS INNER JOIN (PRODCOM INNER JOIN (COMPRAS INNER JOIN(PROVCOM INNER JOIN PROVEEDOR ON PROVEEDOR.CLVPROV = PROVCOM.CLVPROV)
 ON PROVCOM.CLVCOM = COMPRAS.CLVCOM) ON COMPRAS.CLVCOM = PRODCOM.CLVCOM) ON PRODCOM.CLVPROD = PRODUCTOS.CLVPROD
@@ -187,14 +190,15 @@ ELSE
 			ELSE
 				--PRINT'ESE DETALLE YA SE INSERTO'
 				SET @BAN=5
-
+-------------------------------------------------------------------------------------------------------------------------------------------------
+--PROCESOS DE LA TABLA PROVEEDOR
 /*Proceso almacenado que devuelve la próxima clave del proveedor que se insetará*/
 CREATE PROC ULTIMACLVPROVEEDOR
 @CLVPROV INT OUT
 
 AS
 
-IF (SELECT COUNT(*) FROM PROVCOM)=0
+IF (SELECT COUNT(*) FROM PROVEEDOR)=0
 	SET @CLVPROV=400
 ELSE
 	SET @CLVPROV=(SELECT MAX(CLVPROV) FROM PROVEEDOR)+1
@@ -251,6 +255,107 @@ AS
 SET @BAN = 0;
 
 IF (SELECT COUNT(*) FROM PROVEEDOR WHERE CLVPROV = @CLVPROV) = 1
-	DELETE FROM PROVEEDOR WHERE CLVPROV = @CLVPROV
+	BEGIN
+		BEGIN TRAN
+			DELETE FROM PROVEEDOR WHERE CLVPROV = @CLVPROV
+		COMMIT TRAN
+	END
 ELSE
+	SET @BAN = 1
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+--PROCESOS ALMACENADOS PARA LA TABLA PRODUCTOS
+/*Proceso almacenado que regresa la próxima clave de producto a insertar*/
+CREATE PROC ULTIMACLVPROD
+@CLVPROD INT OUT
+
+AS
+
+IF (SELECT COUNT(*) FROM PRODUCTOS)=0
+	SET @CLVPROD=200
+ELSE
+	SET @CLVPROD=(SELECT MAX(CLVPROD) FROM PRODUCTOS)+1
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+/*Proceso almacenado para insetar productos*/
+SELECT * FROM PRODUCTOS
+CREATE PROC INSERTAPRODUCTOS
+@NOMPRODUCT VARCHAR(40),
+@CLVPROD INT,
+@BAN INT OUTPUT
+
+AS
+
+SET @BAN = 0
+
+IF (@NOMPRODUCT='')
+	--PRINT 'FAVOR DE PONER EL NOMBRE DEL PRODUCTO'
+	SET @BAN=1
+ELSE
+	IF (SELECT COUNT(*) FROM PRODUCTOS WHERE NOMPRODUCT=@NOMPRODUCT)=0
+	BEGIN 
+			BEGIN TRAN
+				INSERT INTO PRODUCTOS (CLVPROD, NOMPRODUCT) VALUES (@CLVPROD, @NOMPRODUCT)
+			COMMIT TRAN
+		END
+	ELSE
+		--PRINT 'YA ESXISTE UN PRODUCTO CON EL MISMO NOMBRE'
+		SET @BAN=2
+
+/*Proceso almacenado para eliminar un producto*/
+CREATE PROC ELIMINARPROD
+@CLVPROD INT,
+@BAN INT OUT
+
+AS
+
+SET @BAN = 0
+
+IF (SELECT COUNT(*) FROM PRODUCTOS WHERE CLVPROD = @CLVPROD) = 1
+	BEGIN
+		BEGIN TRAN
+			DELETE PRODUCTOS WHERE CLVPROD = @CLVPROD
+		COMMIT TRAN
+	END
+ELSE
+	SET @BAN = 1
+
+/*Procedimiento almacenado para actualizar información de los productos*/
+SELECT * FROM PRODUCTOS
+CREATE PROC ACTUALIZARPORD
+@CLVPROD INT,
+@NOMPRODUCT VARCHAR(40),
+@PRECIOCOMP MONEY,
+@GANAN MONEY,
+@BAN INT OUT
+
+AS
+
+SET @BAN = 0
+
+IF (SELECT COUNT(*) FROM PRODUCTOS WHERE CLVPROD = @CLVPROD) = 1
+	IF @NOMPRODUCT <> ''
+		IF @PRECIOCOMP > 0
+			IF @GANAN > 0
+				BEGIN
+					BEGIN TRAN
+						UPDATE PRODUCTOS
+							SET NOMPRODUCT = @NOMPRODUCT,
+							PRECIOCOM = @PRECIOCOMP,
+							GANAN = @GANAN,
+							PRECIOVEN = (@PRECIOCOMP + @GANAN) * 1.16
+							WHERE CLVPROD = @CLVPROD
+					COMMIT TRAN
+				END
+			ELSE
+				--LA GANANCIA DEBE SER MAYOR A 0
+				SET @BAN = 4
+		ELSE
+			--EL PRECIO DE COMPRA NO PÚEDE SER 0 O MENOS
+			SET @BAN = 3 
+	ELSE
+		--EL NOMBRE NO PUEDE QUEDAR VACIO
+		SET @BAN = 2
+ELSE
+	--NO EXISTE UN PRODUCTO CON ESA CLAVE
 	SET @BAN = 1
