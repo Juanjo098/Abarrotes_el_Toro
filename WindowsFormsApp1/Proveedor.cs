@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
                 case "modificar":
                     insertar.Enabled = false;
                     eliminar.Enabled = false;
-                    modificar.Enabled = true;
+                    modificar.Enabled = false;
                     consultar.Enabled = true;
                     clave.Enabled = true;
                     nom.Enabled = false;
@@ -105,7 +105,7 @@ namespace WindowsFormsApp1
                     break;
                 case "eliminar":
                     insertar.Enabled = false;
-                    eliminar.Enabled = true;
+                    eliminar.Enabled = false;
                     modificar.Enabled = false;
                     consultar.Enabled = true;
                     nom.Enabled = false;
@@ -213,6 +213,14 @@ namespace WindowsFormsApp1
                     email.Enabled = true;
                     codigo.Enabled = true;
                     ciudad.Enabled = true;
+                    modificar.Enabled = true;
+                    consultar.Enabled = false;
+                }
+                if (funcion.Equals("eliminar"))
+                {
+                    clave.Enabled = false;
+                    eliminar.Enabled = true;
+                    consultar.Enabled = false;
                 }
             }
             else
@@ -252,6 +260,9 @@ namespace WindowsFormsApp1
                 codigo.Text = "";
                 ciudad.Text = "";
                 clave.Text = "";
+                clave.Enabled = true;
+                eliminar.Enabled = false;
+                consultar.Enabled = true;
             }
             connection.Close();
         }
@@ -318,6 +329,8 @@ namespace WindowsFormsApp1
                 codigo.Enabled = false;
                 ciudad.Enabled = false;
                 clave.Enabled = true;
+                consultar.Enabled = true;
+                modificar.Enabled = false;
             }
             connection.Close();
         }

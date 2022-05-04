@@ -251,8 +251,11 @@ namespace WindowsFormsApp1
         {
             if (e.KeyCode == Keys.Delete)
             {
-                tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
-                acualizarTotal();
+                if (tabla.RowCount > 0)
+                {
+                    tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
+                    acualizarTotal();
+                }
             }
         }
     }
