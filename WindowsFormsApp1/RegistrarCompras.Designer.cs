@@ -53,6 +53,8 @@
             this.nombreprod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ganancia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remove = new System.Windows.Forms.Button();
+            this.add = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -65,9 +67,9 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(91)))));
             this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(401, 619);
+            this.button1.Location = new System.Drawing.Point(485, 624);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 41);
+            this.button1.Size = new System.Drawing.Size(190, 40);
             this.button1.TabIndex = 23;
             this.button1.Text = "Capturar compra";
             this.button1.UseVisualStyleBackColor = false;
@@ -287,12 +289,36 @@
             this.ganancia.HeaderText = "Ganancia";
             this.ganancia.Name = "ganancia";
             // 
+            // remove
+            // 
+            this.remove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(91)))));
+            this.remove.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.remove.Location = new System.Drawing.Point(439, 624);
+            this.remove.Name = "remove";
+            this.remove.Size = new System.Drawing.Size(40, 40);
+            this.remove.TabIndex = 73;
+            this.remove.Text = "-";
+            this.remove.UseVisualStyleBackColor = false;
+            // 
+            // add
+            // 
+            this.add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(91)))));
+            this.add.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add.Location = new System.Drawing.Point(393, 624);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(40, 40);
+            this.add.TabIndex = 72;
+            this.add.Text = "+";
+            this.add.UseVisualStyleBackColor = false;
+            // 
             // RegistrarCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.remove);
+            this.Controls.Add(this.add);
             this.Controls.Add(this.tabla);
             this.Controls.Add(this.nombreProv);
             this.Controls.Add(this.proveedores);
@@ -352,5 +378,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreprod;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn ganancia;
+        private System.Windows.Forms.Button remove;
+        private System.Windows.Forms.Button add;
     }
 }

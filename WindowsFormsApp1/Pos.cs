@@ -144,27 +144,7 @@ namespace WindowsFormsApp1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if (claveInsertada())
-                {
-                    SqlCommand command = new SqlCommand("SELECT CLVPROD, NOMPRODUCT, PRECIOVEN FROM PRODUCTOS WHERE CLVPROD =" + claveProd.Text, connection);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        if (!existe(reader["CLVPROD"].ToString()))
-                        {
-                            tabla.Rows.Add();
-                            tabla[0, tabla.RowCount - 1].Value = reader["CLVPROD"].ToString();
-                            tabla[1, tabla.RowCount - 1].Value = 1;
-                            tabla[2, tabla.RowCount - 1].Value = reader["NOMPRODUCT"].ToString();
-                            tabla[3, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["PRECIOVEN"].ToString()), 2).ToString();
-                            claveProd.Text = "";
-                            acualizarTotal();
-                        }
-                    }
-                    reader.Close();
-                    connection.Close();
-                }
+                addFila();
             }
         }
 
@@ -182,12 +162,52 @@ namespace WindowsFormsApp1
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (tabla.RowCount > 0)
-                {
-                    tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
-                    acualizarTotal();
-                }
+                eliminarFila();
             }
+        }
+
+        private void eliminarFila()
+        {
+            if (tabla.RowCount > 0)
+            {
+                tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
+                acualizarTotal();
+            }
+        }
+
+        private void remove_Click(object sender, EventArgs e)
+        {
+            eliminarFila();
+        }
+
+        private void addFila()
+        {
+            if (claveInsertada())
+            {
+                SqlCommand command = new SqlCommand("SELECT CLVPROD, NOMPRODUCT, PRECIOVEN FROM PRODUCTOS WHERE CLVPROD =" + claveProd.Text, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (!existe(reader["CLVPROD"].ToString()))
+                    {
+                        tabla.Rows.Add();
+                        tabla[0, tabla.RowCount - 1].Value = reader["CLVPROD"].ToString();
+                        tabla[1, tabla.RowCount - 1].Value = 1;
+                        tabla[2, tabla.RowCount - 1].Value = reader["NOMPRODUCT"].ToString();
+                        tabla[3, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["PRECIOVEN"].ToString()), 2).ToString();
+                        claveProd.Text = "";
+                        acualizarTotal();
+                    }
+                }
+                reader.Close();
+                connection.Close();
+            }
+        }
+
+        private void add_Click(object sender, EventArgs e)
+        {
+            addFila();
         }
     }
 }
