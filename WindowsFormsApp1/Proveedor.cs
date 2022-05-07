@@ -140,33 +140,33 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand command = new SqlCommand("INSERTAPROV", connection);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@NOMPROV", nom.Text.ToUpper());
-            command.Parameters.AddWithValue("@NOMDIST", dis.Text.ToUpper());
-            command.Parameters.AddWithValue("@TEL", tel.Text.ToUpper());
-            command.Parameters.AddWithValue("@DIREC", dir.Text.ToUpper());
-            command.Parameters.AddWithValue("@EMAIL", email.Text);
-            command.Parameters.AddWithValue("@CP", codigo.Text.ToUpper());
-            command.Parameters.AddWithValue("@CIUDAD", ciudad.Text.ToUpper());
-            command.Parameters.AddWithValue("@CLVPROV", clave.Text.ToUpper());
+            command.Parameters.AddWithValue("@NOMPROV", textBoxValue(nom));
+            command.Parameters.AddWithValue("@NOMDIST", textBoxValue(dis));
+            command.Parameters.AddWithValue("@TEL", textBoxValue(tel));
+            command.Parameters.AddWithValue("@DIREC", textBoxValue(dir));
+            command.Parameters.AddWithValue("@EMAIL", textBoxValue(email));
+            command.Parameters.AddWithValue("@CP", textBoxValue(codigo));
+            command.Parameters.AddWithValue("@CIUDAD", textBoxValue(ciudad));
+            command.Parameters.AddWithValue("@CLVPROV", textBoxValue(clave));
             command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
             command.ExecuteNonQuery();
             error = int.Parse(command.Parameters["@BAN"].Value.ToString());
             switch (error)
             {
                 case 1:
-                    MessageBox.Show("Ingrese el nombre del proveedor");
+                    new Mensaje("No puede dejar vacío el nombre del proveedor", "Error").ShowDialog();
                     break;
                 case 2:
-                    MessageBox.Show("Ingrese el nombre del distribuidor");
+                    new Mensaje("Ingrese el nombre del distribuidor", "Error").ShowDialog();
                     break;
                 case 3:
-                    MessageBox.Show("Ingrese la dirección");
+                    new Mensaje("Ingrese la dirección", "Error").ShowDialog();
                     break;
                 case 4:
-                    MessageBox.Show("Ingrese el email");
+                    new Mensaje("Ingrese el email", "Error").ShowDialog();
                     break;
                 case 5:
-                    MessageBox.Show("Ingrese la ciudad");
+                    new Mensaje("Ingrese la ciudad", "Error").ShowDialog();
                     break;
                 default:
                     ban = true;
@@ -175,7 +175,7 @@ namespace WindowsFormsApp1
             connection.Close();
             if (ban)
             {
-                MessageBox.Show("Proveedor correctamente insertado");
+                new MensajeCorrecto("Se insertó correctamente al proveedor", "Inserción correcta").ShowDialog();
                 nom.Text = "";
                 dis.Text = "";
                 tel.Text = "";
@@ -225,7 +225,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show("No se encontró ningún proveedor con la clave que busca.");
+                new Mensaje("No se encontró ningún proveedor con la clave que busca.", "Error").ShowDialog();
             }
             connection.Close();
         }
@@ -237,13 +237,13 @@ namespace WindowsFormsApp1
             connection.Open();
             command = new SqlCommand("ELIMINARPROV", connection);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@CLVPROV", clave.Text);
+            command.Parameters.AddWithValue("@CLVPROV", textBoxValue(clave));
             command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
             command.ExecuteNonQuery();
             switch (Convert.ToInt32(command.Parameters["@BAN"].Value.ToString()))
             {
                 case 1:
-                    MessageBox.Show("No se encontró ningún proveedor con la clave que busca para eliminar.");
+                    new Mensaje("No se encontró ningún proveedor con la clave que busca para eliminar.", "Error").ShowDialog();
                     break;
                 default:
                     ban = true;
@@ -251,7 +251,7 @@ namespace WindowsFormsApp1
             }
             if (ban)
             {
-                MessageBox.Show("Proveedor eliminado correctamente.");
+                new MensajeCorrecto("Proveedor eliminado correctamente.", "Eliminación realizada").ShowDialog();
                 nom.Text = "";
                 dis.Text = "";
                 tel.Text = "";
@@ -274,38 +274,38 @@ namespace WindowsFormsApp1
             connection.Open();
             command = new SqlCommand("MODIFICAPROV", connection);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@NOMPROV", nom.Text.ToUpper());
-            command.Parameters.AddWithValue("@NOMDIST", dis.Text.ToUpper());
-            command.Parameters.AddWithValue("@TEL", tel.Text.ToUpper());
-            command.Parameters.AddWithValue("@DIREC", dir.Text.ToUpper());
-            command.Parameters.AddWithValue("@EMAIL", email.Text);
-            command.Parameters.AddWithValue("@CP", codigo.Text.ToUpper());
-            command.Parameters.AddWithValue("@CIUDAD", ciudad.Text.ToUpper());
-            command.Parameters.AddWithValue("@CLVPROV", clave.Text.ToUpper());
+            command.Parameters.AddWithValue("@NOMPROV", textBoxValue(nom));
+            command.Parameters.AddWithValue("@NOMDIST", textBoxValue(dis));
+            command.Parameters.AddWithValue("@TEL", textBoxValue(tel));
+            command.Parameters.AddWithValue("@DIREC", textBoxValue(dir));
+            command.Parameters.AddWithValue("@EMAIL", textBoxValue(email));
+            command.Parameters.AddWithValue("@CP", textBoxValue(codigo));
+            command.Parameters.AddWithValue("@CIUDAD", textBoxValue(ciudad));
+            command.Parameters.AddWithValue("@CLVPROV", textBoxValue(clave));
             command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
             command.ExecuteNonQuery();
             switch (Convert.ToInt32(command.Parameters["@BAN"].Value.ToString()))
             {
                 case 1:
-                    MessageBox.Show("Ingrese el nombre del proveedor");
+                    new Mensaje("Ingrese el nombre del proveedor" , "Error").ShowDialog();
                     break;
                 case 2:
-                    MessageBox.Show("Ingrese el nombre del distribuidor");
+                    new Mensaje("Ingrese el nombre del distribuidor" , "Error").ShowDialog();
                     break;
                 case 3:
-                    MessageBox.Show("Ingrese la dirección");
+                    new Mensaje("Ingrese la dirección" , "Error").ShowDialog();
                     break;
                 case 4:
-                    MessageBox.Show("Ingrese el email");
+                    new Mensaje( "Ingrese el email", "Error").ShowDialog();
                     break;
                 case 5:
-                    MessageBox.Show("Ingrese la ciudad");
+                    new Mensaje("Ingrese la ciudad" , "Error").ShowDialog();
                     break;
                 case 6:
-                    MessageBox.Show("La clave del proveedor no puede quedar vacía");
+                    new Mensaje("La clave del proveedor no puede quedar vacía" , "Error").ShowDialog();
                     break;
                 case 7:
-                    MessageBox.Show("La clave del provedor no existe");
+                    new Mensaje("La clave del provedor no existe" , "Error").ShowDialog();
                     break;
                 default:
                     ban = true;
@@ -313,7 +313,7 @@ namespace WindowsFormsApp1
             }
             if (ban)
             {
-                MessageBox.Show("Datos del proveedor actualizados");
+                new MensajeCorrecto("Datos del proveedor actualizados", "Actualización correcta").ShowDialog();
                 nom.Text = "";
                 dis.Text = "";
                 tel.Text = "";
@@ -333,6 +333,13 @@ namespace WindowsFormsApp1
                 modificar.Enabled = false;
             }
             connection.Close();
+        }
+        private String textBoxValue(TextBox t)
+        {
+            if (t.Text != "\r")
+                return t.Text.ToUpper();
+            else
+                return "";
         }
     }
 }

@@ -148,14 +148,14 @@ namespace WindowsFormsApp1
                     cantidad = int.Parse(tabla.CurrentCell.Value.ToString());
                     if (cantidad < 1)
                     {
-                        MessageBox.Show("No se puede ingresar un número menor a 1");
+                        new Mensaje("No se puede ingresar un número menor a 1", "Error").ShowDialog();
                         tabla.CurrentCell.Value = 1;
                     }
                     acualizarTotal();
                 }
                 catch (FormatException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    new Mensaje("Sólo puede ingresar números en esta celda", "Error").ShowDialog();
                     tabla.CurrentCell.Value = 1;
                     acualizarTotal();
                 }
@@ -168,14 +168,14 @@ namespace WindowsFormsApp1
                     cantidad = float.Parse(tabla.CurrentCell.Value.ToString());
                     if (cantidad < 0)
                     {
-                        MessageBox.Show("No se puede ingresar un número menor a 0");
+                        new Mensaje("No se puede ingresar un número menor a 0", "Error").ShowDialog();
                         tabla.CurrentCell.Value = 1;
                     }
                     acualizarTotal();
                 }
                 catch (FormatException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    new Mensaje("Sólo puede ingresar números en esta celda", "Error").ShowDialog();
                     tabla.CurrentCell.Value = 1;
                     acualizarTotal();
                 }
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
                 command.ExecuteNonQuery();
                 estado = int.Parse(command.Parameters["@BAN"].Value.ToString());
                 if (estado == 0)
-                    errors += tabla[2, i].Value.ToString() + "\n";
+                    errors += "-" + tabla[2, i].Value.ToString() + "\n";
             }
             connection.Close();
             return errors;
@@ -236,15 +236,15 @@ namespace WindowsFormsApp1
                     obtenerClaveCompra();
                     acualizarTotal();
                     tabla.Rows.Clear();
-                    MessageBox.Show("Compra registrada exitosamente");
+                    new Mensaje("Compra registrada exitosamente", "Inserción realizada").ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Los siguientes productos no son venidos por el proveedor selecionado\n" + errors);
+                    new Mensaje("Los siguientes productos no son venidos por el proveedor selecionado\n" + errors, "Error").ShowDialog();
                 }
             }
             else
-                MessageBox.Show("Debes añadir por lo menos un registro para hacer la compra");
+                new Mensaje("Debes añadir por lo menos un registro para hacer la compra", "Error").ShowDialog();
         }
 
         private void tabla_KeyUp(object sender, KeyEventArgs e)

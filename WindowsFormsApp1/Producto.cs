@@ -113,10 +113,10 @@ namespace WindowsFormsApp1
             switch (Convert.ToInt32(command.Parameters["@BAN"].Value.ToString()))
             {
                 case 1:
-                    MessageBox.Show("Debe ingresar el nombre del producto");
+                    new Mensaje("Debe ingresar el nombre del producto", "Error").ShowDialog();
                     break;
                 case 2:
-                    MessageBox.Show("Ya existe un producto con ese nombre");
+                    new Mensaje("Ya existe un producto con ese nombre", "Error").ShowDialog();
                     break;
                 default:
                     ban = true;
@@ -125,11 +125,11 @@ namespace WindowsFormsApp1
             connection.Close();
             if (ban)
             {
-                MessageBox.Show("Producto registrado correctamente");
+                new MensajeCorrecto("Producto registrado correctamente", "Insersión correcta").ShowDialog();
                 nom.Text = "";
                 ultimoProducto();
             }
-            
+
         }
 
         private void consultar_Click(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace WindowsFormsApp1
                 }
             }
             else
-                MessageBox.Show("No se encontró ningún producto con esa clave");
+                new Mensaje("No se encontró ningún producto con esa clave", "Error").ShowDialog();
             connection.Close();
         }
 
@@ -174,7 +174,7 @@ namespace WindowsFormsApp1
             switch (Convert.ToInt32(command.Parameters["@BAN"].Value.ToString()))
             {
                 case 1:
-                    MessageBox.Show("No se encontró ningún producto con la clave que busca");
+                    new Mensaje("No se encontró ningún producto con la clave que busca", "Error").ShowDialog();
                     break;
                 default:
                     ban = true;
@@ -183,7 +183,7 @@ namespace WindowsFormsApp1
             connection.Close();
             if (ban)
             {
-                MessageBox.Show("Producto eliminado correctamente");
+                new MensajeCorrecto("Producto eliminado correctamente", "Eliminación correcta").ShowDialog();
                 clave.Text = "";
                 nom.Text = "";
                 prccomp.Text = "";
@@ -199,42 +199,53 @@ namespace WindowsFormsApp1
             SqlCommand command;
             connection.Open();
             command = new SqlCommand("ACTUALIZARPORD", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@CLVPROD", clave.Text);
-            command.Parameters.AddWithValue("@NOMPRODUCT", clave.Text.ToUpper());
-            command.Parameters.AddWithValue("@PRECIOCOMP", Convert.ToDecimal(prccomp.Text));
-            command.Parameters.AddWithValue("@GANAN", Convert.ToDecimal(gan.Text));
-            command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
-            command.ExecuteNonQuery();
-            switch (Convert.ToInt32(command.Parameters["@BAN"].Value.ToString()))
+            try
             {
-                case 1:
-                    MessageBox.Show("La ganancia debe ser mayor a 0");
-                    break;
-                case 2:
-                    MessageBox.Show("El precio de compra debe ser mayoy a 0");
-                    break;
-                case 3:
-                    MessageBox.Show("El nombre no puede quedar vacío");
-                    break;
-                case 4:
-                    MessageBox.Show("No se encontró ningún producto con la clave que busca");
-                    break;
-                default:
-                    ban = true;
-                    break;
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@CLVPROD", clave.Text);
+                command.Parameters.AddWithValue("@NOMPRODUCT", nom.Text.ToUpper());
+                command.Parameters.AddWithValue("@PRECIOCOMP", Convert.ToDecimal(prccomp.Text));
+                command.Parameters.AddWithValue("@GANAN", Convert.ToDecimal(gan.Text));
+                command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
+                command.ExecuteNonQuery();
+                switch (Convert.ToInt32(command.Parameters["@BAN"].Value.ToString()))
+                {
+                    case 1:
+                        new Mensaje("La ganancia debe ser mayor a 0", "Error").ShowDialog();
+                        break;
+                    case 2:
+                        new Mensaje("El precio de compra debe ser mayoy a 0", "Error").ShowDialog();
+                        break;
+                    case 3:
+                        new Mensaje("El nombre no puede quedar vacío", "Error").ShowDialog();
+                        break;
+                    case 4:
+                        new Mensaje("No se encontró ningún producto con la clave que busca", "Error").ShowDialog();
+                        break;
+                    default:
+                        ban = true;
+                        break;
+                }
+                connection.Close();
+                if (ban)
+                {
+                    new MensajeCorrecto("Producto modificado correctamente", "Modificación realizada").ShowDialog();
+                    modificar.Enabled = false;
+                    consultar.Enabled = true;
+                    nom.Enabled = false;
+                    prccomp.Enabled = false;
+                    gan.Enabled = false;
+                    clave.Enabled = true;
+                }
             }
-            connection.Close();
-            if (ban)
+            catch (FormatException ex)
             {
-                MessageBox.Show("Producto modificado correctamente");
-                modificar.Enabled = false;
-                consultar.Enabled = true;
-                nom.Enabled = false;
-                prccomp.Enabled = false;
-                gan.Enabled = false;
-                clave.Enabled = true;
+                connection.Close();
+                new Mensaje("El precio y la ganancia deben ser valores númericos mayores a  0", "").ShowDialog();
             }
+
+
+            
         }
     }
 }

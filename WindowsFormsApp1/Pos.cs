@@ -95,12 +95,13 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    MessageBox.Show("Está tratando de vender más productos de los que hay en existencia\n" + erros);
+                    String msg = "Está tratando de vender más productos de los que hay en existencia\n" + erros;
+                    new Mensaje(msg, "Error").ShowDialog();
                 }
                 connection.Close();
             }
             else
-                MessageBox.Show("No ha ingresado ningún producto");
+                new Mensaje("No ha ingresado ningún producto", "Error").ShowDialog();
         }
 
         private Boolean existe(String clv)
@@ -127,14 +128,14 @@ namespace WindowsFormsApp1
                 cantidad = int.Parse(tabla.CurrentCell.Value.ToString());
                 if (cantidad < 1)
                 {
-                    MessageBox.Show("No se puede ingresar un número menor a 1");
+                    new Mensaje("No se puede ingresar un número menor a 1", "Error").ShowDialog();
                     tabla.CurrentCell.Value = 1;
                 }
                 acualizarTotal();
             }
             catch (FormatException ex)
             {
-                MessageBox.Show(ex.ToString());
+                new Mensaje("Sólo puede ingrensar números en esta celda", "Error").ShowDialog();
                 tabla.CurrentCell.Value = 1;
                 acualizarTotal();
             }
