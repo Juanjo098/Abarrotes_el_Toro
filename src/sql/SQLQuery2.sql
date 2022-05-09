@@ -239,11 +239,12 @@ ELSE
 							IF @CIUDAD=''
 								--PRINT 'POR FAVOR INSERTA LA CIUDAD DE UBICACION'
 								SET @BAN=5
-									BEGIN
-										BEGIN TRAN
-											INSERT INTO PROVEEDOR VALUES (@NOMPROV, @NOMDIST, @TEL, @DIREC, @EMAIL, @CP, @CIUDAD, @CLVPROV)
-										COMMIT TRAN
-									END
+							ELSE
+								BEGIN
+									BEGIN TRAN
+										INSERT INTO PROVEEDOR VALUES (@NOMPROV, @NOMDIST, @TEL, @DIREC, @EMAIL, @CP, @CIUDAD, @CLVPROV)
+									COMMIT TRAN
+								END
 
 /*Proceso que elimina a un proveedor por su clave*/
 CREATE PROC ELIMINARPROV
