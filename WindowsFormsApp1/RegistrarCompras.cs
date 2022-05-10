@@ -113,28 +113,7 @@ namespace WindowsFormsApp1
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if (claveInsertada())
-                {
-                    SqlCommand command = new SqlCommand("SELECT CLVPROD, NOMPRODUCT, PRECIOCOM, GANAN FROM PRODUCTOS WHERE CLVPROD =" + claveProd.Text, connection);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        if (!existe(reader["CLVPROD"].ToString()))
-                        {
-                            tabla.Rows.Add();
-                            tabla[0, tabla.RowCount - 1].Value = reader["CLVPROD"].ToString();
-                            tabla[1, tabla.RowCount - 1].Value = 1;
-                            tabla[2, tabla.RowCount - 1].Value = reader["NOMPRODUCT"].ToString();
-                            tabla[3, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["PRECIOCOM"].ToString()), 2).ToString();
-                            tabla[4, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["GANAN"].ToString()), 2).ToString();
-                            claveProd.Text = "";
-                            acualizarTotal();
-                        }
-                        reader.Close();
-                    }
-                    connection.Close();
-                }
+                addFila();
             }
         }
 
@@ -187,11 +166,12 @@ namespace WindowsFormsApp1
             String errors = "";
             connection.Open();
             SqlCommand command;
-            for (int i = 0; i < tabla.Rows.Count; i++) {
+            for (int i = 0; i < tabla.Rows.Count; i++)
+            {
                 int estado;
                 command = new SqlCommand("PRODPROV", connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@CLVPROD", tabla[0,i].Value.ToString());
+                command.Parameters.AddWithValue("@CLVPROD", tabla[0, i].Value.ToString());
                 command.Parameters.AddWithValue("@CLVPROV", proveedores.Text.ToString());
                 command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
                 command.ExecuteNonQuery();
@@ -251,12 +231,54 @@ namespace WindowsFormsApp1
         {
             if (e.KeyCode == Keys.Delete)
             {
-                if (tabla.RowCount > 0)
-                {
-                    tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
-                    acualizarTotal();
-                }
+                removeFila();
             }
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            addFila();
+        }
+
+        private void addFila()
+        {
+            if (claveInsertada())
+            {
+                SqlCommand command = new SqlCommand("SELECT CLVPROD, NOMPRODUCT, PRECIOCOM, GANAN FROM PRODUCTOS WHERE CLVPROD =" + claveProd.Text, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    if (!existe(reader["CLVPROD"].ToString()))
+                    {
+                        tabla.Rows.Add();
+                        tabla[0, tabla.RowCount - 1].Value = reader["CLVPROD"].ToString();
+                        tabla[1, tabla.RowCount - 1].Value = 1;
+                        tabla[2, tabla.RowCount - 1].Value = reader["NOMPRODUCT"].ToString();
+                        tabla[3, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["PRECIOCOM"].ToString()), 2).ToString();
+                        tabla[4, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["GANAN"].ToString()), 2).ToString();
+                        claveProd.Text = "";
+                        acualizarTotal();
+                    }
+                    reader.Close();
+                }
+                connection.Close();
+            }
+
+        }
+
+        private void removeFila()
+        {
+            if (tabla.RowCount > 0)
+            {
+                tabla.Rows.RemoveAt(tabla.CurrentCell.RowIndex);
+                acualizarTotal();
+            }
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            removeFila();
         }
     }
 }
