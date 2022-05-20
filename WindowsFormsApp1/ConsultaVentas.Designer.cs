@@ -48,11 +48,13 @@
             this.tableAdapterManager = new WindowsFormsApp1.ABARROTESTORODataSetTableAdapters.TableAdapterManager();
             this.vENTASTableAdapter = new WindowsFormsApp1.ABARROTESTORODataSetTableAdapters.VENTASTableAdapter();
             this.vENTASBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tabla = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cClave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIVA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,7 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.aBARROTESTORODataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENTASBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -114,20 +116,22 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(91)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(384, 89);
+            this.button2.Location = new System.Drawing.Point(1079, 86);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 35);
+            this.button2.Size = new System.Drawing.Size(173, 35);
             this.button2.TabIndex = 53;
-            this.button2.Text = "Consulta general";
+            this.button2.Text = "Consulta por fecha";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(91)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(269, 89);
+            this.button1.Location = new System.Drawing.Point(269, 86);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 35);
             this.button1.TabIndex = 52;
@@ -200,11 +204,20 @@
             this.vENTASBindingSource.DataMember = "VENTAS";
             this.vENTASBindingSource.DataSource = this.aBARROTESTORODataSet;
             // 
-            // tabla
+            // fecha
             // 
-            this.tabla.AllowUserToAddRows = false;
-            this.tabla.AllowUserToDeleteRows = false;
-            this.tabla.AutoGenerateColumns = false;
+            this.fecha.CalendarFont = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fecha.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.fecha.Location = new System.Drawing.Point(912, 91);
+            this.fecha.Name = "fecha";
+            this.fecha.Size = new System.Drawing.Size(161, 26);
+            this.fecha.TabIndex = 54;
+            this.fecha.Value = new System.DateTime(2022, 5, 19, 18, 56, 9, 0);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -212,18 +225,17 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.tabla.DataSource = this.vENTASBindingSource;
-            this.tabla.EnableHeadersVisualStyles = false;
-            this.tabla.Location = new System.Drawing.Point(-1, 126);
-            this.tabla.Name = "tabla";
-            this.tabla.ReadOnly = true;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cClave,
+            this.cFecha,
+            this.cSubtotal,
+            this.cIVA,
+            this.cTotal});
+            this.dataGridView1.Location = new System.Drawing.Point(-2, 126);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,44 +243,48 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabla.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.tabla.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabla.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.tabla.Size = new System.Drawing.Size(1267, 554);
-            this.tabla.TabIndex = 53;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1267, 556);
+            this.dataGridView1.TabIndex = 55;
             // 
-            // dataGridViewTextBoxColumn1
+            // cClave
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "SUBTOTAL";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Subtotal";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.cClave.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cClave.HeaderText = "Clave";
+            this.cClave.Name = "cClave";
+            this.cClave.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // cFecha
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "IVA";
-            this.dataGridViewTextBoxColumn2.HeaderText = "IVA";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.cFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cFecha.HeaderText = "Fecha";
+            this.cFecha.Name = "cFecha";
+            this.cFecha.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // cSubtotal
             // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "FECHAVEN";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.cSubtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cSubtotal.HeaderText = "Subtotal";
+            this.cSubtotal.Name = "cSubtotal";
+            this.cSubtotal.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // cIVA
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "CVEVEN";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Clave";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 316;
+            this.cIVA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cIVA.HeaderText = "IVA";
+            this.cIVA.Name = "cIVA";
+            this.cIVA.ReadOnly = true;
+            // 
+            // cTotal
+            // 
+            this.cTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cTotal.HeaderText = "Total";
+            this.cTotal.Name = "cTotal";
+            this.cTotal.ReadOnly = true;
             // 
             // ConsultaVentas
             // 
@@ -276,7 +292,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.tabla);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.fecha);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.consulta);
@@ -300,7 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.aBARROTESTORODataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTOSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENTASBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tabla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,10 +340,12 @@
         private ABARROTESTORODataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private ABARROTESTORODataSetTableAdapters.VENTASTableAdapter vENTASTableAdapter;
         private System.Windows.Forms.BindingSource vENTASBindingSource;
-        private System.Windows.Forms.DataGridView tabla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DateTimePicker fecha;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cClave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cSubtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cIVA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTotal;
     }
 }

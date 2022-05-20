@@ -47,9 +47,10 @@
             this.cOMPRASTableAdapter = new WindowsFormsApp1.ABARROTESTORODataSetTableAdapters.COMPRASTableAdapter();
             this.tableAdapterManager = new WindowsFormsApp1.ABARROTESTORODataSetTableAdapters.TableAdapterManager();
             this.tabla = new System.Windows.Forms.DataGridView();
+            this.fecha = new System.Windows.Forms.DateTimePicker();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -63,11 +64,11 @@
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(239)))), ((int)(((byte)(91)))));
             this.button2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(404, 89);
+            this.button2.Location = new System.Drawing.Point(1085, 89);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 35);
+            this.button2.Size = new System.Drawing.Size(167, 35);
             this.button2.TabIndex = 62;
-            this.button2.Text = "Consulta general";
+            this.button2.Text = "Consulta por fecha";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -200,9 +201,9 @@
             this.tabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.tabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.dataGridViewTextBoxColumn2});
             this.tabla.DataSource = this.cOMPRASBindingSource;
             this.tabla.EnableHeadersVisualStyles = false;
             this.tabla.Location = new System.Drawing.Point(-2, 130);
@@ -219,8 +220,27 @@
             this.tabla.RowHeadersVisible = false;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabla.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.tabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tabla.Size = new System.Drawing.Size(1267, 551);
             this.tabla.TabIndex = 63;
+            // 
+            // fecha
+            // 
+            this.fecha.CalendarFont = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fecha.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.fecha.Location = new System.Drawing.Point(918, 93);
+            this.fecha.Name = "fecha";
+            this.fecha.Size = new System.Drawing.Size(161, 26);
+            this.fecha.TabIndex = 64;
+            this.fecha.Value = new System.DateTime(2022, 5, 19, 18, 56, 9, 0);
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "CLVCOM";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Clave";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -238,20 +258,13 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "CLVCOM";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Clave";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
             // ConsultaCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.fecha);
             this.Controls.Add(this.tabla);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -296,8 +309,9 @@
         private ABARROTESTORODataSetTableAdapters.COMPRASTableAdapter cOMPRASTableAdapter;
         private ABARROTESTORODataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView tabla;
+        private System.Windows.Forms.DateTimePicker fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

@@ -16,13 +16,14 @@ namespace WindowsFormsApp1
         public ConsultaVentas()
         {
             InitializeComponent();
+            fecha.Format = DateTimePickerFormat.Short;
+            fecha.Value = DateTime.Now;
         }
 
         private void ConsultaVentas_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'aBARROTESTORODataSet.VENTAS' Puede moverla o quitarla según sea necesario.
             //this.vENTASTableAdapter.Fill(this.aBARROTESTORODataSet.VENTAS);
-            button1.Enabled = false;
             Program.menuPrincipal.Hide();
         }
 
@@ -62,34 +63,74 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM VENTAS WHERE CVEVEN=" + this.consulta.Text;
-            SqlConnection connection = Conexion.Connection();
-            connection.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            tabla.DataSource = dt;
-            connection.Close();
+            consultaTablaTexto();
+        }
+
+        private void consultaTablaTexto()
+        {
+            if (this.consulta.Text != "")
+            {
+                SqlConnection connection = Conexion.Connection();
+                SqlCommand command;
+                connection.Open();
+                try
+                {
+                    command = new SqlCommand("EXISTEVENTA", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@CVEVEN", Convert.ToInt16(consulta.Text));
+                    command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.ExecuteNonQuery();
+                    if (int.Parse(command.Parameters["@BAN"].Value.ToString()) != 0)
+                        new DetalleVentas(Convert.ToInt16(consulta.Text)).ShowDialog();
+                    else
+                        new Mensaje("No se encontró ninguna venta con la clave que busca", "Venta no encontrada").ShowDialog();
+                }
+                catch (FormatException ex)
+                {
+                    new Mensaje("Solo puede introducti números", "Error de formato").ShowDialog();
+                }
+                consulta.Text = "";
+                connection.Close();
+            }
+            else
+            {
+                if (dataGridView1.Rows.Count > 0)
+                    new DetalleVentas(Convert.ToInt16(dataGridView1[0, dataGridView1.CurrentRow.Index].Value.ToString())).ShowDialog();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM VENTAS";
+            String query = "SELECT CVEVEN, FECHAVEN, SUBTOTAL, IVA, (SUBTOTAL + IVA) AS TOTAL FROM VENTAS WHERE FECHAVEN = '" + fecha.Value.ToString("yyyy-MM-dd") + "'";
             SqlConnection connection = Conexion.Connection();
             connection.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            tabla.DataSource = dt;
-            connection.Close();
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            dataGridView1.Rows.Clear();
+
+            while (reader.Read())
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1[0, dataGridView1.RowCount - 1].Value = reader[0].ToString();
+                dataGridView1[1, dataGridView1.RowCount - 1].Value = Convert.ToDateTime(reader[1].ToString()).ToString("dd/MM/yyyy");
+                dataGridView1[2, dataGridView1.RowCount - 1].Value = reader[2].ToString();
+                dataGridView1[3, dataGridView1.RowCount - 1].Value = reader[3].ToString();
+                dataGridView1[4, dataGridView1.RowCount - 1].Value = reader[4].ToString();
+            }
+
+            if (dataGridView1.Rows.Count == 0)
+                new Mensaje("No se encontraron ventas en la fecha " + fecha.Value.ToString("dd/MM/yyyy"), "Venta no encontrada").ShowDialog();
         }
 
         private void consulta_TextChanged(object sender, EventArgs e)
         {
-            if (consulta.Text.ToString() != "")
-                button1.Enabled = true;
-            else
-                button1.Enabled = false;
+
+        }
+
+        private void tabla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

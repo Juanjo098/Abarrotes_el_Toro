@@ -19,6 +19,8 @@ namespace WindowsFormsApp1
         public ConsultaCompras()
         {
             InitializeComponent();
+            fecha.Format = DateTimePickerFormat.Short;
+            fecha.Value = DateTime.Now;
         }
 
         private void cOMPRASBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -33,7 +35,6 @@ namespace WindowsFormsApp1
         {
             // TODO: esta línea de código carga datos en la tabla 'aBARROTESTORODataSet.COMPRAS' Puede moverla o quitarla según sea necesario.
             //this.cOMPRASTableAdapter.Fill(this.aBARROTESTORODataSet.COMPRAS);
-            button1.Enabled = false;
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM COMPRAS";
+            String consulta = "SELECT * FROM COMPRAS WHERE FECHACOM = '" + fecha.Value.ToString("dd-MM-yyyy") + "'";
             SqlConnection connection = Conexion.Connection();
             connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
@@ -79,10 +80,7 @@ namespace WindowsFormsApp1
 
         private void consulta_TextChanged(object sender, EventArgs e)
         {
-            if (consulta.Text.ToString() != "")
-                button1.Enabled = true;
-            else
-                button1.Enabled = false;
+            
         }
     }
 }
