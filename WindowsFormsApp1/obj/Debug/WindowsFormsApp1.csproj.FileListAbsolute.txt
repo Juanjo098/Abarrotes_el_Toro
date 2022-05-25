@@ -56,3 +56,7 @@ C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Mensaje.resources
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MensajeCorrecto.resources
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.DetalleVentas.resources
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.DetalleVentas.resources
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Mensaje.resources
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MensajeCorrecto.resources
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.DetallesCompras.resources

@@ -43,6 +43,7 @@ namespace WindowsFormsApp1
             command.Parameters.AddWithValue("@CVEVEN", cveven);
             command.ExecuteNonQuery();
             lClave.Text = "Clave: " + cveven;
+
             date = Convert.ToDateTime(command.Parameters["@FECHAVEN"].Value.ToString());
             lFecha.Text = "Fecha: " + date.ToString("dd-MM-yyyy");
             lSubtotal.Text = "Subtotal: $" + decimal.Round(Convert.ToDecimal(command.Parameters["@SUBTOTAL"].Value.ToString()), 2);

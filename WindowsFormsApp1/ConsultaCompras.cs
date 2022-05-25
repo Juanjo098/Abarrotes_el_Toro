@@ -56,19 +56,49 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM COMPRAS WHERE CLVCOM=" + this.consulta.Text;
+
+            if (this.consulta.Text != "")
+            {
+                SqlConnection connection = Conexion.Connection();
+                SqlCommand command;
+                connection.Open();
+                try
+                {
+                    command = new SqlCommand("EXISTECOMPRA", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@CLVCOM", Convert.ToInt16(consulta.Text));
+                    command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    command.ExecuteNonQuery();
+                    if (int.Parse(command.Parameters["@BAN"].Value.ToString()) != 0)
+                        new DetallesCompras(Convert.ToInt16(consulta.Text)).ShowDialog();
+                    else
+                        new Mensaje("No se encontró ninguna compra con la clave que busca", "Venta no encontrada").ShowDialog();
+                }
+                catch (FormatException ex)
+                {
+                    new Mensaje("Solo puede introducir números", "Error de formato").ShowDialog();
+                }
+                consulta.Text = "";
+                connection.Close();
+            }
+            else
+            {
+                if (tabla.Rows.Count > 0)
+                    new DetallesCompras(Convert.ToInt16(tabla[0, tabla.CurrentRow.Index].Value.ToString())).ShowDialog();
+            }
+            /*String consulta = "SELECT * FROM COMPRAS WHERE CLVCOM=" + this.consulta.Text;
             SqlConnection connection = Conexion.Connection();
             connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             tabla.DataSource = dt;
-            connection.Close();
+            connection.Close();*/
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            String consulta = "SELECT * FROM COMPRAS WHERE FECHACOM = '" + fecha.Value.ToString("dd-MM-yyyy") + "'";
+            String consulta = "SELECT * FROM COMPRAS WHERE FECHACOM = '" + fecha.Value.ToString("yyyy-MM-dd") + "'";
             SqlConnection connection = Conexion.Connection();
             connection.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(consulta, connection);
