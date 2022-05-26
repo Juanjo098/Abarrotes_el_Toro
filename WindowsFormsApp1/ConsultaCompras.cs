@@ -105,6 +105,8 @@ namespace WindowsFormsApp1
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             tabla.DataSource = dt;
+            if (tabla.RowCount == 0)
+                new Mensaje("No se encontraron ventas en la fecha " + fecha.Value.ToString("dd/MM/yyyy"), "No se encontraron ventas").ShowDialog();
             connection.Close();
         }
 

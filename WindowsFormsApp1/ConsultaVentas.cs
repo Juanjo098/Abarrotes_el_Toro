@@ -114,9 +114,9 @@ namespace WindowsFormsApp1
                 dataGridView1.Rows.Add();
                 dataGridView1[0, dataGridView1.RowCount - 1].Value = reader[0].ToString();
                 dataGridView1[1, dataGridView1.RowCount - 1].Value = Convert.ToDateTime(reader[1].ToString()).ToString("dd/MM/yyyy");
-                dataGridView1[2, dataGridView1.RowCount - 1].Value = reader[2].ToString();
-                dataGridView1[3, dataGridView1.RowCount - 1].Value = reader[3].ToString();
-                dataGridView1[4, dataGridView1.RowCount - 1].Value = reader[4].ToString();
+                dataGridView1[2, dataGridView1.RowCount - 1].Value = "$" + decimal.Round(Convert.ToDecimal(reader[2].ToString()), 2);
+                dataGridView1[3, dataGridView1.RowCount - 1].Value = "$" + decimal.Round(Convert.ToDecimal(reader[3].ToString()), 2);
+                dataGridView1[4, dataGridView1.RowCount - 1].Value = "$" + decimal.Round(Convert.ToDecimal(reader[4].ToString()), 2);
             }
 
             if (dataGridView1.Rows.Count == 0)

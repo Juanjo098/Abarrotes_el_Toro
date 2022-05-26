@@ -64,7 +64,7 @@ namespace WindowsFormsApp1
                 tabla[0, tabla.RowCount - 1].Value = reader["CLVPROD"].ToString();
                 tabla[1, tabla.RowCount - 1].Value = reader["NOMPRODUCT"].ToString();
                 tabla[2, tabla.RowCount - 1].Value = reader["CANTIDADVEN"].ToString();
-                tabla[3, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["TOTAL"].ToString()), 2).ToString();
+                tabla[3, tabla.RowCount - 1].Value = "$" + decimal.Round(decimal.Parse(reader["TOTAL"].ToString()), 2).ToString();
             }
         }
     }

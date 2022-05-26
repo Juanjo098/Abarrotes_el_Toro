@@ -216,7 +216,7 @@ namespace WindowsFormsApp1
                     obtenerClaveCompra();
                     acualizarTotal();
                     tabla.Rows.Clear();
-                    new Mensaje("Compra registrada exitosamente", "Inserción realizada").ShowDialog();
+                    new MensajeCorrecto("Compra registrada exitosamente", "Inserción realizada").ShowDialog();
                 }
                 else
                 {
@@ -251,12 +251,16 @@ namespace WindowsFormsApp1
                 {
                     if (!existe(reader["CLVPROD"].ToString()))
                     {
+                        decimal d = decimal.Round(Convert.ToDecimal(reader["PRECIOCOM"].ToString()), 2);
+                        decimal g = decimal.Round(Convert.ToDecimal(reader["GANAN"].ToString()), 2);
+                        if (d == 0) d = 1;
+                        if (g == 0) g = 1;
                         tabla.Rows.Add();
                         tabla[0, tabla.RowCount - 1].Value = reader["CLVPROD"].ToString();
                         tabla[1, tabla.RowCount - 1].Value = 1;
                         tabla[2, tabla.RowCount - 1].Value = reader["NOMPRODUCT"].ToString();
-                        tabla[3, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["PRECIOCOM"].ToString()), 2).ToString();
-                        tabla[4, tabla.RowCount - 1].Value = decimal.Round(decimal.Parse(reader["GANAN"].ToString()), 2).ToString();
+                        tabla[3, tabla.RowCount - 1].Value = d.ToString();
+                        tabla[4, tabla.RowCount - 1].Value = g.ToString();
                         claveProd.Text = "";
                         acualizarTotal();
                     }
