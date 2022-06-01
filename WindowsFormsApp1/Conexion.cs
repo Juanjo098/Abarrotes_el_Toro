@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
             try
             {
                 //conn = new SqlConnection("SERVER=DESKTOP-MDS9EJ7;DATABASE=ABARROTESTORO; Integrated security=true");
-                conn = new SqlConnection("SERVER=DESKTOP-J819RJ3;DATABASE=ABARROTESTORO; Integrated security=true");
+                conn = new SqlConnection("SERVER=(local);DATABASE=ABARROTESTORO; Integrated security=true");
             }
             catch (SqlException ex)
             {
