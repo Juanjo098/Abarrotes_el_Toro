@@ -25,9 +25,6 @@ C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\Windows
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ConsultaProveedores.resources
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ConsultaCompras.resources
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ConsultaProductos.resources
-C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
-C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
-C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ConsultaCompras.resources
@@ -44,8 +41,6 @@ C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Proveedor.resources
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
-C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
-C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegistrarCompras.resources
 C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.RegistrarCompras.resources
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Mensaje.resources
@@ -65,3 +60,12 @@ C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\Abarrot
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\AbarrotesElToro.application
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\AbarrotesElToro.exe
 C:\Users\juanj\source\repos\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\AbarrotesElToro.pdb
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\AbarrotesElToro.exe.config
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\AbarrotesElToro.exe.manifest
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\AbarrotesElToro.application
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\AbarrotesElToro.exe
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\bin\Debug\AbarrotesElToro.pdb
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\AbarrotesElToro.exe.manifest
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\AbarrotesElToro.application
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\AbarrotesElToro.exe
+C:\Users\juanj\OneDrive\Escritorio\Abarrotes_el_Toro\WindowsFormsApp1\obj\Debug\AbarrotesElToro.pdb

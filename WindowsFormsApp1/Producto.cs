@@ -155,6 +155,16 @@ namespace WindowsFormsApp1
                     clave.Enabled = false;
                     consultar.Enabled = false;
                 }
+                if (funcion == "eliminar")
+                {
+                    eliminar.Enabled = true;
+                    modificar.Enabled = false;
+                    nom.Enabled = false;
+                    prccomp.Enabled = false;
+                    gan.Enabled = false;
+                    clave.Enabled = false;
+                    consultar.Enabled = false;
+                }
             }
             else
                 new Mensaje("No se encontró ningún producto con esa clave", "Error").ShowDialog();
