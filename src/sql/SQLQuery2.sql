@@ -4,9 +4,7 @@
 	-Actualiza la total de la venta
 	-Actualiza las existencias de los productos
 */
-SELECT * FROM VENTAS
-SELECT * FROM VENPRODPRODPROV
-
+go
 CREATE PROC INSERTAVENPROD
 @CVEVEN INT,
 @CLVPROD INT,
@@ -18,7 +16,7 @@ AS
 IF (SELECT COUNT (*) FROM VENTAS WHERE CVEVEN=@CVEVEN)=1
 	IF(SELECT COUNT(*) FROM PRODUCTOS WHERE CLVPROD=@CLVPROD)=1
 		IF @CANTVEN>0
-			IF (SELECT EXIST FROM PRODUCTOS WHERE CLVPROD=@CLVPROD)>@CANTVEN
+			IF (SELECT EXIST FROM PRODUCTOS WHERE CLVPROD=@CLVPROD)>=@CANTVEN
 				IF (SELECT COUNT(*) FROM VENPROD WHERE CLVPROD=@CLVPROD AND CVEVEN=@CVEVEN)=1
 					--PRINT 'ESE DETALLE YA SE HABIA INSERTADO'
 					SET @BAN=1
@@ -50,6 +48,7 @@ ELSE
 	SET @BAN=5
 -------------------------------------------------------------------------------------------------------------------------------------------------
 /*Porceso almacenado que se encarga de hacer inserciones en la tabla ventas*/
+go
 CREATE PROC INSERTAVENTAS
 
 @CVEVEN INT OUT
@@ -70,7 +69,7 @@ ELSE
 --PROCESOS ALMACENADOS PARA LA TABLA DE COMPRAS
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado para obtener la próxima clave de compra a insertar*/
-SELECT * FROM PROVEEDOR
+go
 CREATE PROC ULTIMACLVCOMPRA
 @CLVCOM INT OUT
 
@@ -83,6 +82,7 @@ ELSE
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado que retorna el nombre del provedor*/
+go
 CREATE PROC NOMBREPROV
 @CLVPROV INT,
 @NOMDIST VARCHAR(50) OUT
@@ -95,8 +95,7 @@ ELSE
 	SET @NOMDIST = NULL
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado que se encarga de hacer registros en la tabla compras*/
-SELECT * FROM PROVEEDOR
-EXEC INTERTACOMPRA 403,0
+go
 CREATE PROC INTERTACOMPRA
 @PROV INT,
 @BAN INT OUTPUT
@@ -124,12 +123,7 @@ ELSE
 	END
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado para verificar que un producto sea vendido por un determiando proveedor*/
-SELECT PRODUCTOS.CLVPROD, PROVEEDOR.CLVPROV
-FROM PRODUCTOS INNER JOIN (PRODCOM INNER JOIN (COMPRAS INNER JOIN(PROVCOM INNER JOIN PROVEEDOR ON PROVEEDOR.CLVPROV = PROVCOM.CLVPROV)
-ON PROVCOM.CLVCOM = COMPRAS.CLVCOM) ON COMPRAS.CLVCOM = PRODCOM.CLVCOM) ON PRODCOM.CLVPROD = PRODUCTOS.CLVPROD
-
-SELECT * FROM COMPRAS
-
+go
 CREATE PROC PRODPROV
 @CLVPROD INT,
 @CLVPROV INT,
@@ -147,7 +141,8 @@ ELSE
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado que se encarga de insertar registros en la tabla detalle producto-compra*/
-CREATE alter PROC INTERTAPRODCOM
+go
+CREATE PROC INTERTAPRODCOM
 @CLVCOM INT,
 @CLVPROD INT,
 @CANTCOM INT,
@@ -198,6 +193,7 @@ ELSE
 -------------------------------------------------------------------------------------------------------------------------------------------------
 --PROCESOS DE LA TABLA PROVEEDOR
 /*Proceso almacenado que devuelve la próxima clave del proveedor que se insetará*/
+go
 CREATE PROC ULTIMACLVPROVEEDOR
 @CLVPROV INT OUT
 
@@ -209,7 +205,7 @@ ELSE
 	SET @CLVPROV=(SELECT MAX(CLVPROV) FROM PROVEEDOR)+1
 
 /*Proceso almacenado para realizar la inserción de un nuevo proveedor*/
-SELECT * FROM PROVEEDOR
+go
 CREATE PROC INSERTAPROV
 @NOMPROV VARCHAR (50),
 @NOMDIST VARCHAR (50),
@@ -252,6 +248,7 @@ ELSE
 								END
 
 /*Proceso que elimina a un proveedor por su clave*/
+go
 CREATE PROC ELIMINARPROV
 @CLVPROV INT,
 @BAN INT OUT
@@ -272,6 +269,7 @@ ELSE
 -------------------------------------------------------------------------------------------------------------------------------------------------
 --PROCESOS ALMACENADOS PARA LA TABLA PRODUCTOS
 /*Proceso almacenado que regresa la próxima clave de producto a insertar*/
+go
 CREATE PROC ULTIMACLVPROD
 @CLVPROD INT OUT
 
@@ -284,7 +282,7 @@ ELSE
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 /*Proceso almacenado para insetar productos*/
-SELECT * FROM PRODUCTOS
+go
 CREATE PROC INSERTAPRODUCTOS
 @NOMPRODUCT VARCHAR(40),
 @CLVPROD INT,
@@ -309,6 +307,7 @@ ELSE
 		SET @BAN=2
 
 /*Proceso almacenado para eliminar un producto*/
+go
 CREATE PROC ELIMINARPROD
 @CLVPROD INT,
 @BAN INT OUT
@@ -327,7 +326,7 @@ ELSE
 	SET @BAN = 1
 
 /*Procedimiento almacenado para actualizar información de los productos*/
-SELECT * FROM PRODUCTOS
+go
 CREATE PROC ACTUALIZARPORD
 @CLVPROD INT,
 @NOMPRODUCT VARCHAR(40),
@@ -367,6 +366,7 @@ ELSE
 	SET @BAN = 1
 
 --Procedimiento almacenado que determina si existe una venta por su clave.
+go
 CREATE PROC EXISTEVENTA
 @CVEVEN INT,
 @BAN INT OUTPUT
@@ -376,6 +376,7 @@ AS
 SET @BAN = (SELECT COUNT(*) FROM VENTAS WHERE CVEVEN = @CVEVEN)
 
 --Proceso almacenado que permite consultar clave, nombre, cantidad venida y total de los productos de una determinada venta
+go
 CREATE PROCEDURE PRODUCTOSVEND
 @CVEVEN INT
 AS
@@ -384,6 +385,7 @@ FROM PRODUCTOS INNER JOIN VENPROD ON VENPROD.CLVPROD = PRODUCTOS.CLVPROD
 WHERE VENPROD.CVEVEN = @CVEVEN
 
 --Procseso almacenado que recupera el subtotal, el iva y la fecha en la que se realió la venta.
+go
 CREATE PROCEDURE INFOVENTA
 @SUBTOTAL MONEY OUTPUT,
 @IVA MONEY OUTPUT,
@@ -397,6 +399,7 @@ SET @IVA = (SELECT IVA FROM VENTAS WHERE CVEVEN = @CVEVEN)
 SET @FECHAVEN = (SELECT FECHAVEN FROM VENTAS WHERE CVEVEN = @CVEVEN)
 
 --Proceso almacenado para 
+go
 CREATE PROCEDURE PRODUCTOSCOMP
 @CLVCOM INT
 AS
@@ -404,7 +407,8 @@ SELECT PRODUCTOS.CLVPROD, PRODUCTOS.NOMPRODUCT, PRODCOM.CANTCOM, (PRODUCTOS.PREC
 FROM PRODUCTOS INNER JOIN PRODCOM ON PRODCOM.CLVPROD = PRODUCTOS.CLVPROD
 WHERE PRODCOM.CLVCOM = @CLVCOM
 
-CREATE ALTER PROC INFOCOMPRA
+go
+CREATE PROC INFOCOMPRA
 @CLAVE INT,
 @FECHACOM DATE OUT,
 @TOTALCOM MONEY OUT
@@ -414,6 +418,7 @@ AS
 SET @FECHACOM = (SELECT FECHACOM FROM COMPRAS WHERE CLVCOM = @CLAVE)
 SET @TOTALCOM = (SELECT TOTALCOM FROM COMPRAS WHERE CLVCOM = @CLAVE)
 
+go
 CREATE PROC EXISTECOMPRA
 @CLVCOM INT,
 @BAN INT OUT
