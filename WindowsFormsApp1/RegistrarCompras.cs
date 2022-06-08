@@ -53,11 +53,11 @@ namespace WindowsFormsApp1
         private void llenarComboBox()
         {
             connection.Open();
-            SqlCommand command = new SqlCommand("SELECT CLVPROV FROM PROVEEDOR", connection);
+            SqlCommand command = new SqlCommand("SELECT NOMDIST FROM PROVEEDOR", connection);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                proveedores.Items.Add(reader["CLVPROV"].ToString());
+                proveedores.Items.Add(reader["NOMDIST"].ToString());
             }
             reader.Close();
             connection.Close();
@@ -68,10 +68,10 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand command = new SqlCommand("NOMBREPROV", connection);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@CLVPROV", proveedores.Text);
-            command.Parameters.Add("@NOMDIST", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+            command.Parameters.AddWithValue("@NOMDIST", proveedores.Text);
+            command.Parameters.Add("@CLVPROV", SqlDbType.Int).Direction = ParameterDirection.Output;
             command.ExecuteNonQuery();
-            nombreProv.Text = command.Parameters["@NOMDIST"].Value.ToString();
+            nombreProv.Text = command.Parameters["@CLVPROV"].Value.ToString();
             connection.Close();
         }
 
@@ -172,7 +172,7 @@ namespace WindowsFormsApp1
                 command = new SqlCommand("PRODPROV", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CLVPROD", tabla[0, i].Value.ToString());
-                command.Parameters.AddWithValue("@CLVPROV", proveedores.Text.ToString());
+                command.Parameters.AddWithValue("@CLVPROV", nombreProv.Text.ToString());
                 command.Parameters.Add("@BAN", SqlDbType.Int).Direction = ParameterDirection.Output;
                 command.ExecuteNonQuery();
                 estado = int.Parse(command.Parameters["@BAN"].Value.ToString());
@@ -191,7 +191,7 @@ namespace WindowsFormsApp1
                 if (errors == "")
                 {
                     SqlCommand command;
-                    String prov = proveedores.Text;
+                    String prov = nombreProv.Text;
                     connection.Open();
 
                     command = new SqlCommand("INTERTACOMPRA", connection);

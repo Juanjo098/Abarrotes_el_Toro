@@ -84,15 +84,14 @@ ELSE
 /*Procedimiento almacenado que retorna el nombre del provedor*/
 go
 CREATE PROC NOMBREPROV
-@CLVPROV INT,
-@NOMDIST VARCHAR(50) OUT
-
+@NOMDIST VARCHAR(50),
+@CLVPROV INT OUT
 AS
 
-IF (SELECT COUNT(*) FROM PROVEEDOR WHERE CLVPROV = @CLVPROV)= 1
-	SET @NOMDIST = (SELECT NOMDIST FROM PROVEEDOR WHERE CLVPROV = @CLVPROV)
+IF (SELECT COUNT(*) FROM PROVEEDOR WHERE NOMDIST = @NOMDIST)= 1
+	SET @CLVPROV = (SELECT CLVPROV FROM PROVEEDOR WHERE NOMDIST = @NOMDIST)
 ELSE
-	SET @NOMDIST = NULL
+	SET @CLVPROV = -1
 -----------------------------------------------------------------------------------------------------------------------------------------------
 /*Procedimiento almacenado que se encarga de hacer registros en la tabla compras*/
 go
